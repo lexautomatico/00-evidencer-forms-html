@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔐⚖️&nbsp;11. Purchasing a Claim Interest</title>
+<!-- EB Garamond -->
+<link rel="stylesheet" href="%F0%9F%94%90%E2%9A%96%EF%B8%8F%2011.%20Purchasing%20a%20Claim%20Interest_files/css2_003.css">
+<!-- Roboto -->
+<link rel="stylesheet" href="%F0%9F%94%90%E2%9A%96%EF%B8%8F%2011.%20Purchasing%20a%20Claim%20Interest_files/css2_002.css">
+<!-- Lato -->
+<link rel="stylesheet" href="%F0%9F%94%90%E2%9A%96%EF%B8%8F%2011.%20Purchasing%20a%20Claim%20Interest_files/css2.css">
+
+<style>
+    body {
+    /* font-family: EB Garamond, san-serif; */
+    font-family: Roboto, serif;
+    /* font-family: Lato, serif; */
+    /* font-family: Futura, serif; */
+    
+    margin: 0;
+      padding: 20px; /* Add some padding */
+      background-color: #f3f3f3; /* Light gray background */
+    }
+  
+    h1 {
+      text-align: left;
+      color: #333; /* Dark gray color */
+    }
+  
+    form {
+      background-color: #fff; /* White background */
+      border-radius: 10px; /* Rounded corners */
+      padding: 20px; /* Add some padding */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+      margin-bottom: 20px; /* Add some margin at the bottom */
+    }
+  
+    form label {
+      display: block;
+      margin-bottom: 10px;
+      color: #555; /* Medium gray color */
+    }
+  
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="tel"],
+    form select,
+    form input[type="date"],
+    form input[type="datetime-local"],
+    form textarea {
+      width: calc(100% - 22px); /* Adjusted width to span container minus padding */
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc; /* Gray border */
+      border-radius: 5px; /* Rounded corners */
+      box-sizing: border-box;
+    }
+  
+    button {
+      background-color: #4CAF50; /* Green */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  
+    button:hover {
+      background-color: #45a049; /* Darker green on hover */
+    }
+  
+    #jsonOutput {
+      margin-top: 20px; /* Add some space between form and JSON output */
+      background-color: #fff; /* White background */
+      border-radius: 5px; /* Rounded corners */
+      padding: 20px; /* Add some padding */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+      white-space: pre-wrap; /* Wrap long lines */
+      color: #333; /* Dark gray color */
+    }
+  
+    #saveButton {
+  background-color: #337ab7; /* Blue color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#saveButton:hover {
+  background-color: #286090; /* Darker blue on hover */
+}
+
+
+
+
+    /* Header */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f0f0f0;
+        padding: 10px 20px;
+    }
+
+    .logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    .logo img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .header-links {
+    display: flex;
+    align-items: center;
+}
+
+.header-links .logo-with-link {
+    margin-right: 20px; /* Adjust as needed */
+}
+
+
+
+.header-links a {
+        margin-right: 20px; /* Adjust spacing between links */
+        font-family: "Lato", sans-serif; /* Apply Futura font */
+        color: #333; /* Text color */
+        text-decoration: none; /* Remove default underline */
+        padding: 5px 10px; /* Add padding around each link */
+        border-radius: 5px; /* Add rounded corners */
+        background-color: #f0f0f0; /* Background color */
+        transition: background-color 0.3s ease; /* Smooth transition */
+    }
+
+    .header-links a:hover {
+        background-color: #ccc; /* Darker background color on hover */
+    }
+
+
+
+
+
+
+
+
+    .nav {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav li {
+        margin-right: 20px;
+    }
+
+    .nav li:last-child {
+        margin-right: 0;
+    }
+
+
+
+
+
+/* Second Header */
+.second-header {
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation-links {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Ensure it takes up the full width */
+}
+
+.navigation-links a {
+    color: #333;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: #333;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 10px; /* Add padding */
+    margin-right: 20px; /* Add margin to the right */
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 12px; /* Smaller font size */
+    font-family: Roboto, sans-serif; /* Futura font */
+}
+
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #ccc;
+}
+
+
+
+    /* Footer */
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    footer a {
+    color: lightgray;
+  }
+
+  figcaption {
+    font-family: 'EB Garamond', serif;
+        font-size: 10pt;
+        font-weight: bold;
+        color: #333;
+        margin-top: 1px;
+        text-align: left;
+    }
+
+
+
+  </style>
+</head>
+<body>
+
+    <!-- Header -->
+<header>
+  <div class="logo">
+      <a href="https://evidencer.freeweb3.com/" target="_blank">
+          <img src="%F0%9F%94%90%E2%9A%96%EF%B8%8F%2011.%20Purchasing%20a%20Claim%20Interest_files/QmRMssmpnd1ZVqoM82oaxbhLVXPiTDfkWA46WfPkYRcTxj.svg" alt="Evidencer">
+      </a>
+  </div>
+
+
+  <div class="logo-with-link">
+      <a href="https://evidencer.freeweb3.com/" target="_blank">
+          <img src="%F0%9F%94%90%E2%9A%96%EF%B8%8F%2011.%20Purchasing%20a%20Claim%20Interest_files/QmP9tW2r473BdCPGGtK8pY73Eo4zLcNbjE25eGEM13wLYt.png" alt="Evidencer Digital Claim Manager" width="350" height="100">
+          <figcaption style="font-family: 'EB Garamond', serif; margin-left: 20px; font-size: 14pt;">Claim Management System</figcaption>
+      </a>
+  </div>
+
+
+  <div class="header-links">
+    <a href="https://lexautomatico.com/" target="_blank">LexAutomatico</a>
+    <a href="https://lex.freeweb3.com/" target="_blank">SmartLaw</a> 
+    <a href="https://web3bits.com/" target="_blank">Courtroom</a> 
+</div>
+  <div class="nav">
+      <div class="dropdown">
+          <button class="dropbtn">☰</button>
+          <div class="dropdown-content">
+            <a href="https://users.freeweb3.com/" target="_blank">Setup User Account</a>
+            <a href="https://upload.freeweb3.com/" target="_blank">Raw Data Upload</a>
+            <a href="https://encrypted-ipfs-upload.freeweb3.com/" target="_blank">Encrypted JSON Upload</a>
+            <a href="https://image,encrypt.freeweb3.com/" target="_blank">Encrypted Image Upload</a>
+            <a href="https://image.decoder.freeweb3.com/" target="_blank">Image Decoder</a>
+            <a href="https://forms.evidencer.freeweb3.com/" target="_blank">Evidencer Forms</a>
+            <a href="https://query.evidencer.freeweb3.com/" target="_blank">Query Digital Artifacts</a>
+            <a href="https://artifacts.freeweb3.com/" target="_blank">Create Digital Artifacts</a>
+            <a href="https://cidtochain.freeweb3.com/" target="_blank">CID to Chain</a>
+            <a href="https://cidtochainfree.freeweb3.com/" target="_blank">CID to Chain Free</a>
+        </div>
+      </div>
+
+
+      <div class="additional-element"></div> <!-- New element -->
+      <div class="nav">
+          <div class="dropdown">
+              <button class="dropbtn">≪</button>
+          </div>
+      </div>
+      
+      <div class="additional-element"></div> <!-- New element -->
+      <div class="nav">
+          <div class="dropdown">
+              <button class="dropbtn">≫</button>
+          </div>
+      </div>
+    
+    </div></header>
+
+  <!-- Second Header -->
+  <header class="second-header">
+    <div class="navigation-links">
+
+    <a href="https://encrypted-ipfs-upload.freeweb3.com/" target="_blank">Encrypted Upload</a>
+
+
+
+    <a href="https://forms.evidencer.freeweb3.com/" target="_blank" style="margin-left: auto;">Evidencer Forms</a>
+
+
+    </div>
+  </header>
+
+
+<h1>11. Purchasing a Claim Interest (11/15)</h1>
+<form id="identityForm">
+  <!-- Identity Verification Document -->
+  <label for="verificationDocument">Identity Verification Document:</label>
+  <input type="text" id="verificationDocument" name="verificationDocument" placeholder="Enter file path or URL">
+  
+  <!-- Support for Victims -->
+  <label for="victimSupport">Support for Victims:</label>
+  <textarea id="victimSupport" name="victimSupport" rows="4" cols="50"></textarea>
+  
+  <!-- Reference for Legal Claim -->
+  <label for="claimReference">Reference for Legal Claim:</label>
+  <textarea id="claimReference" name="claimReference" rows="4" cols="50"></textarea>
+  
+  <!-- Initial Claim Amount -->
+  <label for="initialClaimAmount">Initial Claim Amount:</label>
+  <input type="text" id="initialClaimAmount" name="initialClaimAmount">
+  
+  <!-- Bonded Ether Amount -->
+  <label for="bondedEtherAmount">Bonded Ether Amount:</label>
+  <input type="text" id="bondedEtherAmount" name="bondedEtherAmount">
+  
+  <!-- Claim Support -->
+  <label for="claimSupport">Claim Support:</label>
+  <textarea id="claimSupport" name="claimSupport" rows="4" cols="50"></textarea>
+  
+  <!-- Amount for Evidencer System -->
+  <label for="evidencerAmount">Amount for Evidencer System:</label>
+  <input type="text" id="evidencerAmount" name="evidencerAmount">
+  
+  <!-- Service Costs -->
+  <label for="serviceCosts">Service Costs:</label>
+  <input type="text" id="serviceCosts" name="serviceCosts">
+  
+  <!-- Supplemental Information -->
+  <label for="supplementalInfo">Supplemental Information:</label>
+  <textarea id="supplementalInfo" name="supplementalInfo" rows="4" cols="50"></textarea>
+  
+  <!-- Worldlaw Services Participation -->
+  <label for="worldlawServices">Worldlaw Services Participation:</label>
+  <textarea id="worldlawServices" name="worldlawServices" rows="4" cols="50"></textarea>
+  
+  <!-- Blockchain Transaction Costs -->
+  <label for="blockchainCosts">Blockchain Transaction Costs:</label>
+  <input type="text" id="blockchainCosts" name="blockchainCosts">
+  
+  <button type="button" onclick="generateJSON()">Generate JSON</button>
+</form>
+
+<pre id="jsonOutput"></pre>
+
+<br><br>
+<p>You must Create a JSON before saving</p>
+<button id="saveButton" onclick="saveFiles()">Save JSON &amp; TXT</button>
+
+
+  <!-- Footer -->
+  <footer>
+    <p><a href="https://lex.freeweb3.com/" target="_blank">Web3 Legal Engineering © 2024</a></p>
+   </footer>
+
+
+
+<script>
+function generateJSON() {
+    const form = document.getElementById('identityForm');
+    const formData = new FormData(form);
+    const jsonData = {};
+
+    formData.forEach((value, key) => {
+        jsonData[key] = value;
+    });
+
+    const jsonString = JSON.stringify(jsonData, null, 2);
+    console.log(jsonString); // Display JSON in console
+
+    // Display JSON in the UI
+    document.getElementById('jsonOutput').textContent = jsonString;
+}
+
+function saveFiles() {
+        const jsonData = document.getElementById('jsonOutput').textContent;
+
+        // Prompt the user to confirm filenames
+        const jsonFilename = prompt('Enter filename for JSON file:', 'purchase-interest.json');
+        const txtFilename = prompt('Enter filename for TXT file:', 'purchase-interest.txt');
+
+        if (jsonFilename && txtFilename) {
+            // Save JSON data to files
+            saveToFile(jsonData, jsonFilename);
+            saveToFile(jsonData, txtFilename);
+
+            // Show message indicating file creation and download
+            showMessage('Files created and downloaded successfully.');
+        } else {
+            showMessage('Filename(s) not provided. Files not saved.');
+        }
+    }
+
+    function saveToFile(data, filename) {
+        const blob = new Blob([data], { type: 'application/json' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        link.click();
+    }
+
+    function showMessage(message) {
+        alert(message);
+    }
+
+</script>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+</body></html>

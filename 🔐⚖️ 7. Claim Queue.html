@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔐⚖️&nbsp;7. Claim Queue</title>
+  <!-- EB Garamond -->
+<link rel="stylesheet" href="%F0%9F%94%90%E2%9A%96%EF%B8%8F%207.%20Claim%20Queue_files/css2_003.css">
+<!-- Roboto -->
+<link rel="stylesheet" href="%F0%9F%94%90%E2%9A%96%EF%B8%8F%207.%20Claim%20Queue_files/css2_002.css">
+<!-- Lato -->
+<link rel="stylesheet" href="%F0%9F%94%90%E2%9A%96%EF%B8%8F%207.%20Claim%20Queue_files/css2.css">
+
+  <style>
+    body {
+    /* font-family: EB Garamond, san-serif; */
+    font-family: Roboto, serif;
+    /* font-family: Lato, serif; */
+    /* font-family: Futura, serif; */
+
+      margin: 0;
+      padding: 20px; /* Add some padding */
+    }
+
+    h1 {
+      text-align: left;
+    }
+
+    form {
+      background-color: #f9f9f9; /* Light gray background */
+      border-radius: 10px; /* Rounded corners */
+      padding: 20px; /* Add some padding */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+      margin-bottom: 20px; /* Add some margin at the bottom */
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333; /* Label color */
+      font-weight: bold; /* Bold font weight */
+    }
+
+    form input[type="range"],
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="tel"],
+    form select,
+    form input[type="date"],
+    form input[type="datetime-local"],
+    form textarea {
+      width: calc(100% - 22px); /* Span to the width of the form box */
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc; /* Gray border */
+      border-radius: 5px; /* Rounded corners */
+      box-sizing: border-box;
+    }
+
+    form input[type="range"] {
+      margin-bottom: 20px; /* Larger margin for sliders */
+    }
+
+    .slider-container {
+      position: relative;
+    }
+
+    .slider-value {
+      position: absolute;
+      top: -25px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+    }
+
+    button {
+      background-color: #4CAF50; /* Green */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #45a049; /* Darker green on hover */
+    }
+
+    #jsonOutput {
+      margin-top: 20px; /* Add some space between form and JSON output */
+    }
+
+    #saveButton {
+  background-color: #337ab7; /* Blue color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#saveButton:hover {
+  background-color: #286090; /* Darker blue on hover */
+}
+
+
+
+
+
+
+    /* Header */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f0f0f0;
+        padding: 10px 20px;
+    }
+
+    .logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    .logo img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .header-links {
+    display: flex;
+    align-items: center;
+}
+
+.header-links .logo-with-link {
+    margin-right: 20px; /* Adjust as needed */
+}
+
+
+
+.header-links a {
+        margin-right: 20px; /* Adjust spacing between links */
+        font-family: "Lato", sans-serif; /* Apply Futura font */
+        color: #333; /* Text color */
+        text-decoration: none; /* Remove default underline */
+        padding: 5px 10px; /* Add padding around each link */
+        border-radius: 5px; /* Add rounded corners */
+        background-color: #f0f0f0; /* Background color */
+        transition: background-color 0.3s ease; /* Smooth transition */
+    }
+
+    .header-links a:hover {
+        background-color: #ccc; /* Darker background color on hover */
+    }
+
+
+
+
+
+
+
+
+    .nav {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav li {
+        margin-right: 20px;
+    }
+
+    .nav li:last-child {
+        margin-right: 0;
+    }
+
+
+
+
+
+/* Second Header */
+.second-header {
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation-links {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Ensure it takes up the full width */
+}
+
+.navigation-links a {
+    color: #333;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: #333;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 10px; /* Add padding */
+    margin-right: 20px; /* Add margin to the right */
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 12px; /* Smaller font size */
+    font-family: Roboto, sans-serif; /* Futura font */
+}
+
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #ccc;
+}
+
+
+
+    /* Footer */
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    footer a {
+    color: lightgray;
+  }
+
+  figcaption {
+    font-family: 'EB Garamond', serif;
+        font-size: 10pt;
+        font-weight: bold;
+        color: #333;
+        margin-top: 1px;
+        text-align: left;
+    }
+
+
+
+  </style>
+</head>
+<body>
+
+    <!-- Header -->
+<header>
+  <div class="logo">
+      <a href="https://evidencer.freeweb3.com/" target="_blank">
+          <img src="%F0%9F%94%90%E2%9A%96%EF%B8%8F%207.%20Claim%20Queue_files/QmRMssmpnd1ZVqoM82oaxbhLVXPiTDfkWA46WfPkYRcTxj.svg" alt="Evidencer">
+      </a>
+  </div>
+
+
+  <div class="logo-with-link">
+      <a href="https://evidencer.freeweb3.com/" target="_blank">
+          <img src="%F0%9F%94%90%E2%9A%96%EF%B8%8F%207.%20Claim%20Queue_files/QmP9tW2r473BdCPGGtK8pY73Eo4zLcNbjE25eGEM13wLYt.png" alt="Evidencer Digital Claim Manager" width="350" height="100">
+          <figcaption style="font-family: 'EB Garamond', serif; margin-left: 20px; font-size: 14pt;">Claim Management System</figcaption>
+      </a>
+  </div>
+
+
+  <div class="header-links">
+    <a href="https://lexautomatico.com/" target="_blank">LexAutomatico</a>
+    <a href="https://lex.freeweb3.com/" target="_blank">SmartLaw</a> 
+    <a href="https://web3bits.com/" target="_blank">Courtroom</a> 
+</div>
+  <div class="nav">
+      <div class="dropdown">
+          <button class="dropbtn">☰</button>
+          <div class="dropdown-content">
+            <a href="https://users.freeweb3.com/" target="_blank">Setup User Account</a>
+            <a href="https://upload.freeweb3.com/" target="_blank">Raw Data Upload</a>
+            <a href="https://encrypted-ipfs-upload.freeweb3.com/" target="_blank">Encrypted JSON Upload</a>
+            <a href="https://image,encrypt.freeweb3.com/" target="_blank">Encrypted Image Upload</a>
+            <a href="https://image.decoder.freeweb3.com/" target="_blank">Image Decoder</a>
+            <a href="https://forms.evidencer.freeweb3.com/" target="_blank">Evidencer Forms</a>
+            <a href="https://query.evidencer.freeweb3.com/" target="_blank">Query Digital Artifacts</a>
+            <a href="https://artifacts.freeweb3.com/" target="_blank">Create Digital Artifacts</a>
+            <a href="https://cidtochain.freeweb3.com/" target="_blank">CID to Chain</a>
+            <a href="https://cidtochainfree.freeweb3.com/" target="_blank">CID to Chain Free</a>
+        </div>
+      </div>
+
+
+      <div class="additional-element"></div> <!-- New element -->
+      <div class="nav">
+          <div class="dropdown">
+              <button class="dropbtn">≪</button>
+          </div>
+      </div>
+      
+      <div class="additional-element"></div> <!-- New element -->
+      <div class="nav">
+          <div class="dropdown">
+              <button class="dropbtn">≫</button>
+          </div>
+      </div>
+    
+    </div></header>
+
+  <!-- Second Header -->
+  <header class="second-header">
+    <div class="navigation-links">
+
+    <a href="https://encrypted-ipfs-upload.freeweb3.com/" target="_blank">Encrypted Upload</a>
+
+
+
+    <a href="https://forms.evidencer.freeweb3.com/" target="_blank" style="margin-left: auto;">Evidencer Forms</a>
+
+
+    </div>
+  </header>
+
+
+  <h1>7. Claim Queue (7/15)</h1>
+  <form id="claimForm">
+    <h2>Claim Manager</h2>
+    <label for="claimResolutionObjective">Claim Resolution Objective:</label>
+    <input type="text" id="claimResolutionObjective" name="claimResolutionObjective" required="">
+    <br><br>
+    <label for="generalDescriptionOfProoferServiceAgreement">General Description of Proofer Service Agreement:</label>
+    <textarea id="generalDescriptionOfProoferServiceAgreement" name="generalDescriptionOfProoferServiceAgreement"></textarea>
+    <br><br>
+    <label for="referenceCodeForEvidencerClaim">Reference Code for Evidencer Claim:</label>
+    <input type="text" id="referenceCodeForEvidencerClaim" name="referenceCodeForEvidencerClaim" required="">
+    <br><br>
+    <label for="activeClaim">Active Claim:</label>
+    <input type="checkbox" id="activeClaim" name="activeClaim" value="true">
+    <br><br>
+    <h2>Claim Info</h2>
+    <label for="claimCode">Claim Code:</label>
+    <input type="text" id="claimCode" name="claimCode" required="">
+    <br><br>
+    <label for="userClaimReference">User Claim Reference:</label>
+    <input type="text" id="userClaimReference" name="userClaimReference" required="">
+    <br><br>
+    <label for="evidencerClaimHash">Evidencer Claim Hash:</label>
+    <input type="text" id="evidencerClaimHash" name="evidencerClaimHash" required="">
+    <br><br>
+    <label>ESI Hashes:</label>
+    <div id="esiHashesContainer"></div>
+    <button type="button" onclick="addEsiHash()">Add ESI Hash</button>
+    <br><br>
+    <label for="evidencerHash">Evidencer Hash:</label>
+    <input type="text" id="evidencerHash" name="evidencerHash" required="">
+    <br><br>
+    <h2>Resolving Option</h2>
+    <label for="adjudicationOption">Adjudication Option:</label>
+    <input type="text" id="adjudicationOption" name="adjudicationOption" required="">
+    <br><br>
+    <label>Adjudication Preference:</label>
+    <div id="adjudicationPreferenceContainer"></div>
+    <button type="button" onclick="addAdjudicationPreference()">Add Adjudication Preference</button>
+    <br><br>
+    <label for="otherImportantDetail">Other Important Detail:</label>
+    <input type="text" id="otherImportantDetail" name="otherImportantDetail">
+    <br><br>
+    <label for="verificationDate">Verification Date:</label>
+    <input type="date" id="verificationDate" name="verificationDate" required="">
+    <br><br>
+    <h2>Cause of Action</h2>
+    <label for="shortDescription">Short Description of Legal Cause of Action:</label>
+    <input type="text" id="shortDescription" name="shortDescription" required="">
+    <br><br>
+    <label for="masterCauseOfActionCategory">Master Cause of Action Category:</label>
+    <input type="text" id="masterCauseOfActionCategory" name="masterCauseOfActionCategory" required="">
+    <br><br>
+    <label for="claimantsEstimatedDamages">Claimant's Estimated Damages:</label>
+    <input type="range" id="claimantsEstimatedDamages" name="claimantsEstimatedDamages" min="0" max="25000" step="500" value="0">
+    <div class="slider-container">
+      <div id="claimantsEstimatedDamagesValue" class="slider-value">$0</div>
+    </div>
+    <br><br>
+    <label for="prooferEstimatedDamages">Proofer Estimated Damages:</label>
+    <input type="range" id="prooferEstimatedDamages" name="prooferEstimatedDamages" min="0" max="25000" step="500" value="0">
+    <div class="slider-container">
+      <div id="prooferEstimatedDamagesValue" class="slider-value">$0</div>
+    </div>
+    <br><br>
+    <label for="causeOfActionDescription">Cause of Action Description:</label>
+    <textarea id="causeOfActionDescription" name="causeOfActionDescription"></textarea>
+    <br><br>
+
+    <br><br>
+    <label for="causeOfAction">Cause of Action:</label>
+    <select id="causeOfAction">
+      <option value="" selected="selected">Select Cause of Action</option>
+      <option value="Cause of Action 1">Cause of Action 1</option>
+      <option value="Cause of Action 2">Cause of Action 2</option>
+      <option value="Cause of Action 3">Cause of Action 3</option>
+      <option value="Cause of Action 4">Cause of Action 4</option>
+      <option value="Cause of Action 5">Cause of Action 5</option>
+      <option value="Cause of Action 6">Cause of Action 6</option>
+      <option value="Cause of Action 7">Cause of Action 7</option>
+      <option value="Cause of Action 8">Cause of Action 8</option>
+      <option value="Cause of Action 9">Cause of Action 9</option>
+      <option value="Cause of Action 10">Cause of Action 10</option>
+    </select>
+    
+    <br><br>
+    
+    <!-- Resolving Option fieldset as a table -->
+    <fieldset>
+      <legend>Resolving Option</legend>
+      <table class="three-columns-table">
+        <tbody><tr>
+          <td><label for="resolutionOption">Adjudication Option:</label></td>
+          <td colspan="2"><input type="text" id="resolutionOption"></td>
+        </tr>
+        <tr>
+          <td><label for="resolutionPreference">Resolution Preference:</label></td>
+          <td><input type="checkbox" id="resolution1" name="resolutionPreference" value="Resolution 1"><label for="resolution1">Resolution 1</label></td>
+          <td><input type="checkbox" id="resolution2" name="resolutionPreference" value="Resolution 2"><label for="resolution2">Resolution 2</label></td>
+          <td><input type="checkbox" id="resolution3" name="resolutionPreference" value="Resolution 3"><label for="resolution3">Resolution 3</label></td>
+          <td></td>
+        </tr>
+      </tbody></table>
+    </fieldset>
+
+    <button type="button" onclick="submitData()">Submit</button>
+  </form>
+
+  <pre id="jsonOutput"></pre>
+
+  <br><br>
+<p>You must Create a JSON before saving</p>
+<button id="saveButton" onclick="saveFiles()">Save JSON &amp; TXT</button>
+
+  <!-- Footer -->
+  <footer>
+    <p><a href="https://lex.freeweb3.com/" target="_blank">Web3 Legal Engineering © 2024</a></p>
+   </footer>
+
+
+
+  <script>
+    function addEsiHash() {
+      const esiHashesContainer = document.getElementById('esiHashesContainer');
+      const newEsiHash = document.createElement('input');
+      newEsiHash.type = 'text';
+      newEsiHash.name = 'esiHashes';
+      esiHashesContainer.appendChild(newEsiHash);
+    }
+
+    function addAdjudicationPreference() {
+      const adjudicationPreferenceContainer = document.getElementById('adjudicationPreferenceContainer');
+      const newAdjudicationPreference = document.createElement('input');
+      newAdjudicationPreference.type = 'text';
+      newAdjudicationPreference.name = 'adjudicationPreference';
+      adjudicationPreferenceContainer.appendChild(newAdjudicationPreference);
+    }
+
+    // Function to update slider value display
+    function updateSliderValue(sliderId, displayId) {
+      const slider = document.getElementById(sliderId);
+      const display = document.getElementById(displayId);
+      display.textContent = `$${slider.value}`;
+    }
+
+    // Call the updateSliderValue function for both sliders
+    document.getElementById('claimantsEstimatedDamages').addEventListener('input', function() {
+      updateSliderValue('claimantsEstimatedDamages', 'claimantsEstimatedDamagesValue');
+    });
+
+    document.getElementById('prooferEstimatedDamages').addEventListener('input', function() {
+      updateSliderValue('prooferEstimatedDamages', 'prooferEstimatedDamagesValue');
+    });
+
+    function submitData() {
+      const claimData = {
+        claimManager: {
+          claimResolutionObjective: document.getElementById('claimResolutionObjective').value,
+          generalDescriptionOfProoferServiceAgreement: document.getElementById('generalDescriptionOfProoferServiceAgreement').value,
+          referenceCodeForEvidencerClaim: document.getElementById('referenceCodeForEvidencerClaim').value,
+          activeClaim: document.getElementById('activeClaim').checked
+        },
+        claimInfo: {
+          claimCode: document.getElementById('claimCode').value,
+          userClaimReference: document.getElementById('userClaimReference').value,
+          evidencerClaimHash: document.getElementById('evidencerClaimHash').value,
+          esiHashes: Array.from(document.getElementsByName('esiHashes')).map(input => input.value),
+          evidencerHash: document.getElementById('evidencerHash').value
+        },
+        resolvingOption: {
+          adjudicationOption: document.getElementById('adjudicationOption').value,
+          resolutionOption: document.getElementById('resolutionOption').value,
+          resolutionPreference: Array.from(document.querySelectorAll('input[name="resolutionPreference"]:checked')).map(input => input.value),
+          otherImportantDetail: document.getElementById('otherImportantDetail').value,
+          verificationDate: document.getElementById('verificationDate').value
+        },
+        causeOfAction: {
+          shortDescription: document.getElementById('shortDescription').value,
+          masterCauseOfActionCategory: document.getElementById('masterCauseOfActionCategory').value,
+          claimantsEstimatedDamages: document.getElementById('claimantsEstimatedDamages').value,
+          prooferEstimatedDamages: document.getElementById('prooferEstimatedDamages').value,
+          causeOfActionDescription: document.getElementById('causeOfActionDescription').value,
+          causeOfActions: [
+            {
+              id: 100,
+              description: "TRIAL_OVERVIEW"
+            },
+            {
+              id: 200,
+              description: "ADMINISTRATION_AND_EVIDENCE"
+            },
+            {
+              id: 300,
+              description: "CONTRACTS_AND_COMMON_COUNTS"
+            },
+            {
+              id: 400,
+              description: "NEGLIGENCE"
+            },
+            {
+              id: 700,
+              description: "VEHICLE_AND_COMMON_CARRIERS"
+            },
+            {
+              id: 1000,
+              description: "PREMISES_LIABILITY"
+            },
+            {
+              id: 2000,
+              description: "TRESSPASS"
+            },
+            {
+              id: 3000,
+              description: "CIVIL_RIGHTS"
+            },
+            {
+              id: 4700,
+              description: "EQUITY_DAMAGES_REMEDIES"
+            },
+            {
+              id: 5000,
+              description: "CLAIM_RESOLUTION"
+            }
+          ]
+        }
+      };
+
+      const jsonString = JSON.stringify(claimData, null, 2);
+      console.log(jsonString);
+      document.getElementById('jsonOutput').textContent = jsonString;
+    }
+
+    function saveFiles() {
+        const jsonData = document.getElementById('jsonOutput').textContent;
+
+        // Prompt the user to confirm filenames
+        const jsonFilename = prompt('Enter filename for JSON file:', 'claim-queue.json');
+        const txtFilename = prompt('Enter filename for TXT file:', 'claim-queue.txt');
+
+        if (jsonFilename && txtFilename) {
+            // Save JSON data to files
+            saveToFile(jsonData, jsonFilename);
+            saveToFile(jsonData, txtFilename);
+
+            // Show message indicating file creation and download
+            showMessage('Files created and downloaded successfully.');
+        } else {
+            showMessage('Filename(s) not provided. Files not saved.');
+        }
+    }
+
+    function saveToFile(data, filename) {
+        const blob = new Blob([data], { type: 'application/json' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        link.click();
+    }
+
+    function showMessage(message) {
+        alert(message);
+    }
+
+</script>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+</body></html>

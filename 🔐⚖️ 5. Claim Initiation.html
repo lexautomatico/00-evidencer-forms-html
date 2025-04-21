@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔐⚖️&nbsp;5. Claim Initiation</title>
+<!-- EB Garamond -->
+<link rel="stylesheet" href="%F0%9F%94%90%E2%9A%96%EF%B8%8F%205.%20Claim%20Initiation_files/css2_003.css">
+<!-- Roboto -->
+<link rel="stylesheet" href="%F0%9F%94%90%E2%9A%96%EF%B8%8F%205.%20Claim%20Initiation_files/css2_002.css">
+<!-- Lato -->
+<link rel="stylesheet" href="%F0%9F%94%90%E2%9A%96%EF%B8%8F%205.%20Claim%20Initiation_files/css2.css">
+
+<style>
+    body {
+    /* font-family: EB Garamond, san-serif; */
+    font-family: Roboto, serif;
+    /* font-family: Lato, serif; */
+    /* font-family: Futura, serif; */
+
+      margin: 0;
+      padding: 20px; /* Add some padding */
+    }
+  
+    h1 {
+      text-align: left;
+    }
+  
+    form {
+      background-color: #f9f9f9; /* Light gray background */
+      border-radius: 10px; /* Rounded corners */
+      padding: 20px; /* Add some padding */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+      margin-bottom: 20px; /* Add some margin at the bottom */
+    }
+  
+    form label {
+      display: block;
+      margin-bottom: 5px;
+    }
+  
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="tel"],
+    form select,
+    form input[type="date"],
+    form input[type="datetime-local"],
+    form textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc; /* Gray border */
+      border-radius: 5px; /* Rounded corners */
+      box-sizing: border-box;
+    }
+  
+    button {
+      background-color: #4CAF50; /* Green */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  
+    button:hover {
+      background-color: #45a049; /* Darker green on hover */
+    }
+  
+    #jsonOutput {
+      margin-top: 20px; /* Add some space between form and JSON output */
+    }
+  
+    #saveButton {
+  background-color: #337ab7; /* Blue color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#saveButton:hover {
+  background-color: #286090; /* Darker blue on hover */
+}
+
+
+
+
+
+    /* Header */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f0f0f0;
+        padding: 10px 20px;
+    }
+
+    .logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    .logo img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .header-links {
+    display: flex;
+    align-items: center;
+}
+
+.header-links .logo-with-link {
+    margin-right: 20px; /* Adjust as needed */
+}
+
+
+
+.header-links a {
+        margin-right: 20px; /* Adjust spacing between links */
+        font-family: "Lato", sans-serif; /* Apply Futura font */
+        color: #333; /* Text color */
+        text-decoration: none; /* Remove default underline */
+        padding: 5px 10px; /* Add padding around each link */
+        border-radius: 5px; /* Add rounded corners */
+        background-color: #f0f0f0; /* Background color */
+        transition: background-color 0.3s ease; /* Smooth transition */
+    }
+
+    .header-links a:hover {
+        background-color: #ccc; /* Darker background color on hover */
+    }
+
+
+
+
+
+
+
+
+    .nav {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav li {
+        margin-right: 20px;
+    }
+
+    .nav li:last-child {
+        margin-right: 0;
+    }
+
+
+
+
+
+/* Second Header */
+.second-header {
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation-links {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Ensure it takes up the full width */
+}
+
+.navigation-links a {
+    color: #333;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: #333;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 10px; /* Add padding */
+    margin-right: 20px; /* Add margin to the right */
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 12px; /* Smaller font size */
+    font-family: Roboto, sans-serif; /* Futura font */
+}
+
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #ccc;
+}
+
+
+
+    /* Footer */
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    footer a {
+    color: lightgray;
+  }
+
+  figcaption {
+    font-family: 'EB Garamond', serif;
+        font-size: 10pt;
+        font-weight: bold;
+        color: #333;
+        margin-top: 1px;
+        text-align: left;
+    }
+
+
+
+  </style></head>
+
+  
+<body>
+
+    <!-- Header -->
+<header>
+  <div class="logo">
+      <a href="https://evidencer.freeweb3.com/" target="_blank">
+          <img src="%F0%9F%94%90%E2%9A%96%EF%B8%8F%205.%20Claim%20Initiation_files/QmRMssmpnd1ZVqoM82oaxbhLVXPiTDfkWA46WfPkYRcTxj.svg" alt="Evidencer">
+      </a>
+  </div>
+
+
+  <div class="logo-with-link">
+      <a href="https://evidencer.freeweb3.com/" target="_blank">
+          <img src="%F0%9F%94%90%E2%9A%96%EF%B8%8F%205.%20Claim%20Initiation_files/QmP9tW2r473BdCPGGtK8pY73Eo4zLcNbjE25eGEM13wLYt.png" alt="Evidencer Digital Claim Manager" width="350" height="100">
+          <figcaption style="font-family: 'EB Garamond', serif; margin-left: 20px; font-size: 14pt;">Claim Management System</figcaption>
+      </a>
+  </div>
+
+
+  <div class="header-links">
+    <a href="https://lexautomatico.com/" target="_blank">LexAutomatico</a>
+    <a href="https://lex.freeweb3.com/" target="_blank">SmartLaw</a> 
+    <a href="https://web3bits.com/" target="_blank">Courtroom</a> 
+</div>
+  <div class="nav">
+      <div class="dropdown">
+          <button class="dropbtn">☰</button>
+          <div class="dropdown-content">
+            <a href="https://users.freeweb3.com/" target="_blank">Setup User Account</a>
+            <a href="https://upload.freeweb3.com/" target="_blank">Raw Data Upload</a>
+            <a href="https://encrypted-ipfs-upload.freeweb3.com/" target="_blank">Encrypted JSON Upload</a>
+            <a href="https://image,encrypt.freeweb3.com/" target="_blank">Encrypted Image Upload</a>
+            <a href="https://image.decoder.freeweb3.com/" target="_blank">Image Decoder</a>
+            <a href="https://forms.evidencer.freeweb3.com/" target="_blank">Evidencer Forms</a>
+            <a href="https://query.evidencer.freeweb3.com/" target="_blank">Query Digital Artifacts</a>
+            <a href="https://artifacts.freeweb3.com/" target="_blank">Create Digital Artifacts</a>
+            <a href="https://cidtochain.freeweb3.com/" target="_blank">CID to Chain</a>
+            <a href="https://cidtochainfree.freeweb3.com/" target="_blank">CID to Chain Free</a>
+        </div>
+      </div>
+
+
+      <div class="additional-element"></div> <!-- New element -->
+      <div class="nav">
+          <div class="dropdown">
+              <button class="dropbtn">≪</button>
+          </div>
+      </div>
+      
+      <div class="additional-element"></div> <!-- New element -->
+      <div class="nav">
+          <div class="dropdown">
+              <button class="dropbtn">≫</button>
+          </div>
+      </div>
+    
+    </div></header>
+
+  <!-- Second Header -->
+  <header class="second-header">
+    <div class="navigation-links">
+
+    <a href="https://encrypted-ipfs-upload.freeweb3.com/" target="_blank">Encrypted Upload</a>
+
+
+
+    <a href="https://forms.evidencer.freeweb3.com/" target="_blank" style="margin-left: auto;">Evidencer Forms</a>
+
+
+    </div>
+  </header>
+
+
+
+<h1>5. Claim Initiation (5/15)</h1>
+<form id="claimantForm">
+
+
+<h2>Claimant Information</h2>
+
+<fieldset>
+<legend>Client/Claimant</legend>
+<label for="victimOrRepresentation">Victim or Representation:</label>
+<input type="text" id="victimOrRepresentation" name="victimOrRepresentation"><br><br>
+
+<label for="relationshipToClaim">Relationship to Claim:</label>
+<input type="text" id="relationshipToClaim" name="relationshipToClaim"><br><br>
+
+<label for="legalRepresentation">Legal Representation:</label>
+<input type="text" id="legalRepresentation" name="legalRepresentation"><br><br>
+</fieldset>
+
+
+<h2>Capacity and Authorized Parties</h2>
+<label for="role">Role in the Claim:</label>
+<input type="text" id="role" name="role" required=""><br><br>
+<label for="age">Age at Time of Claim Filing:</label>
+<input type="number" id="age" name="age" required=""><br><br>
+<label for="signatureForClaimCreation">Signature for Claim Creation:</label>
+<input type="text" id="signatureForClaimCreation" name="signatureForClaimCreation" required=""><br><br>
+<label for="signatureForIdentityEstablishment">Signature for Identity Establishment:</label>
+<input type="text" id="signatureForIdentityEstablishment" name="signatureForIdentityEstablishment" required=""><br><br>
+<label for="signatureForEsiAuthentication">Signature for ESI Authentication:</label>
+<input type="text" id="signatureForEsiAuthentication" name="signatureForEsiAuthentication" required=""><br><br>
+<label for="signatureForClaimVerification">Signature for Claim Verification:</label>
+<input type="text" id="signatureForClaimVerification" name="signatureForClaimVerification" required=""><br><br>
+
+
+<h2>Claim Submission Details</h2>
+<fieldset>
+<legend>Claim Submission Details</legend>
+<label for="fileClaim">Do you want to file a claim?</label>
+<input type="checkbox" id="fileClaim" name="fileClaim"><br><br>
+
+<label for="claimBasis">Basis of the Claim:</label>
+<input type="text" id="claimBasis" name="claimBasis"><br><br>
+
+<label for="legalClaimBasis">Basis of the Legal Claim:</label>
+<input type="text" id="legalClaimBasis" name="legalClaimBasis"><br><br>
+
+
+<label for="eventDescription">Event Description:</label>
+<textarea id="eventDescription" name="eventDescription"></textarea><br><br>
+
+<label for="fullEventDescription">Full Event Description:</label>
+<textarea id="fullEventDescription" name="fullEventDescription"></textarea><br><br>
+
+<label for="coreFacts">Core Facts:</label>
+<textarea id="coreFacts" name="coreFacts"></textarea><br><br>
+
+<label for="claimObjective">Claim Objective:</label>
+<input type="text" id="claimObjective" name="claimObjective"><br><br>
+</fieldset>
+
+
+<h2>The Claims and Relevant Legal Issues</h2>
+
+<fieldset>
+<legend>The Client's Claims</legend>
+<label for="supplementalInfo">Supplemental Information:</label>
+<textarea id="supplementalInfo" name="supplementalInfo"></textarea><br><br>
+
+<label for="legalIssues">Legal Issues:</label>
+<input type="text" id="legalIssues" name="legalIssues"><br><br>
+
+<label for="completeRecord">Complete Record:</label>
+<select id="completeRecord" name="completeRecord">
+  <option value="" selected="selected">Select option</option>
+  <option value="true">True</option>
+  <option value="false">False</option>
+</select><br><br>
+</fieldset>
+
+
+<fieldset>
+  <legend>Relevance</legend>
+  <label for="relevantESI">Relevant E.S.I.:</label>
+  <input type="text" id="relevantESI" name="relevantESI"><br><br>
+  </fieldset>
+  
+
+  <h2>Supplemental Information</h2>
+
+<fieldset>
+<legend>Supplemental Claim Information</legend>
+<label for="claimInstances">Claim Instances:</label>
+<input type="text" id="claimInstances" name="claimInstances"><br><br>
+
+<label for="claimState">Claim State:</label>
+<select id="claimState" name="claimState">
+  <option value="" selected="selected">Select option</option>
+  <option value="activeLitigation">Active Litigation</option>
+  <option value="activeInWorldlaw">Active in Worldlaw</option>
+  <option value="finalResolution">Final Resolution</option>
+  <option value="waitingResolution">Waiting for Resolution</option>
+</select><br><br>
+</fieldset>
+
+<fieldset>
+<legend>Security Objectives of Claim Resolution</legend>
+<label for="securityMeasure">Security Measure:</label>
+<textarea id="securityMeasure" name="securityMeasure"></textarea><br><br>
+</fieldset>
+
+<button type="button" onclick="submitForm()">Submit</button>
+</form>
+
+<pre id="jsonOutput"></pre>
+
+<br><br>
+<p>You must Create a JSON before saving</p>
+<button id="saveButton" onclick="saveFiles()">Save JSON &amp; TXT</button>
+
+  <!-- Footer -->
+  <footer>
+    <p><a href="https://lex.freeweb3.com/" target="_blank">Web3 Legal Engineering © 2024</a></p>
+   </footer>
+
+
+
+<script>
+
+function submitForm() {
+      var formData = {
+        claimantInformation: {
+          victimOrRepresentation: document.getElementById('victimOrRepresentation').value,
+          relationshipToClaim: document.getElementById('relationshipToClaim').value,
+          legalRepresentation: document.getElementById('legalRepresentation').value
+        },
+        capacityAndAuthorizedParties: {
+              role: document.getElementById('role').value,
+              age: document.getElementById('age').value,
+              signatureForClaimCreation: document.getElementById('signatureForClaimCreation').value,
+              signatureForIdentityEstablishment: document.getElementById('signatureForIdentityEstablishment').value,
+              signatureForEsiAuthentication: document.getElementById('signatureForEsiAuthentication').value,
+              signatureForClaimVerification: document.getElementById('signatureForClaimVerification').value
+            },
+            claimDetailsSubmission: {
+              fileClaim: document.getElementById('fileClaim').checked,
+              claimBasis: document.getElementById('claimBasis').value,
+              legalClaimBasis: document.getElementById('legalClaimBasis').value,
+              eventDescription: document.getElementById('eventDescription').value,
+              fullEventDescription: document.getElementById('fullEventDescription').value,
+              coreFacts: document.getElementById('coreFacts').value,
+              claimObjective: document.getElementById('claimObjective').value
+            },
+          relevance: {
+              relevantESI: document.getElementById('relevantESI').value
+          },
+          supplementalClaimInfo: {
+              claimInstances: document.getElementById('claimInstances').value,
+              claimState: document.getElementById('claimState').value
+          },
+          factsObjectives: {
+              securityMeasure: document.getElementById('securityMeasure').value
+          }
+      };
+  
+      var jsonData = JSON.stringify(formData, null, 2); // Prettify JSON
+      console.log(jsonData);
+      document.getElementById("jsonOutput").innerHTML = jsonData;
+  }
+
+  function saveFiles() {
+        const jsonData = document.getElementById('jsonOutput').textContent;
+
+        // Prompt the user to confirm filenames
+        const jsonFilename = prompt('Enter filename for JSON file:', 'claim-inititation.json');
+        const txtFilename = prompt('Enter filename for TXT file:', 'claim-inititation.txt');
+
+        if (jsonFilename && txtFilename) {
+            // Save JSON data to files
+            saveToFile(jsonData, jsonFilename);
+            saveToFile(jsonData, txtFilename);
+
+            // Show message indicating file creation and download
+            showMessage('Files created and downloaded successfully.');
+        } else {
+            showMessage('Filename(s) not provided. Files not saved.');
+        }
+    }
+
+    function saveToFile(data, filename) {
+        const blob = new Blob([data], { type: 'application/json' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        link.click();
+    }
+
+    function showMessage(message) {
+        alert(message);
+    }
+
+
+
+</script>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+</body></html>

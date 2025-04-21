@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔐⚖️&nbsp;2. ESI Upload (2/15)</title>
+<!-- EB Garamond -->
+<link rel="stylesheet" href="%F0%9F%94%90%E2%9A%96%EF%B8%8F%202.%20ESI%20Upload%20(2_15)_files/css2_003.css">
+<!-- Roboto -->
+<link rel="stylesheet" href="%F0%9F%94%90%E2%9A%96%EF%B8%8F%202.%20ESI%20Upload%20(2_15)_files/css2_002.css">
+<!-- Lato -->
+<link rel="stylesheet" href="%F0%9F%94%90%E2%9A%96%EF%B8%8F%202.%20ESI%20Upload%20(2_15)_files/css2.css">
+
+<style>
+    body {
+    /* font-family: EB Garamond, san-serif; */
+    font-family: Roboto, serif;
+    /* font-family: Lato, serif; */
+    /* font-family: Futura, serif; */
+      
+      margin: 0;
+      padding: 20px; /* Add some padding */
+    }
+  
+    h1 {
+        text-align: left;
+    }
+  
+    form {
+      background-color: #f9f9f9; /* Light gray background */
+      border-radius: 10px; /* Rounded corners */
+      padding: 20px; /* Add some padding */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+      margin-bottom: 20px; /* Add some margin at the bottom */
+    }
+  
+    form label {
+      display: block;
+      margin-bottom: 5px;
+    }
+  
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="tel"],
+    form select,
+    form input[type="date"],
+    form input[type="datetime-local"],
+    form textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc; /* Gray border */
+      border-radius: 5px; /* Rounded corners */
+      box-sizing: border-box;
+    }
+  
+    button {
+      background-color: #4CAF50; /* Green */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  
+    button:hover {
+      background-color: #45a049; /* Darker green on hover */
+    }
+  
+    #jsonOutput {
+      margin-top: 20px; /* Add some space between form and JSON output */
+      background-color: #f0f0f0;
+      padding: 20px;
+      border-radius: 5px;
+      overflow: auto;
+      max-height: 400px;
+      font-size: 14px;
+      white-space: pre-wrap;
+    }
+  
+    #downloadMessage {
+      display: none;
+      color: green;
+      font-weight: bold;
+    }
+
+    #saveButton {
+  background-color: #337ab7; /* Blue color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#saveButton:hover {
+  background-color: #286090; /* Darker blue on hover */
+}
+
+
+
+
+    /* Header */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f0f0f0;
+        padding: 10px 20px;
+    }
+
+    .logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    .logo img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .header-links {
+    display: flex;
+    align-items: center;
+}
+
+.header-links .logo-with-link {
+    margin-right: 20px; /* Adjust as needed */
+}
+
+
+
+.header-links a {
+        margin-right: 20px; /* Adjust spacing between links */
+        font-family: "Lato", sans-serif; /* Apply Futura font */
+        color: #333; /* Text color */
+        text-decoration: none; /* Remove default underline */
+        padding: 5px 10px; /* Add padding around each link */
+        border-radius: 5px; /* Add rounded corners */
+        background-color: #f0f0f0; /* Background color */
+        transition: background-color 0.3s ease; /* Smooth transition */
+    }
+
+    .header-links a:hover {
+        background-color: #ccc; /* Darker background color on hover */
+    }
+
+
+
+
+
+
+
+
+    .nav {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav li {
+        margin-right: 20px;
+    }
+
+    .nav li:last-child {
+        margin-right: 0;
+    }
+
+
+
+
+
+/* Second Header */
+.second-header {
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation-links {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Ensure it takes up the full width */
+}
+
+.navigation-links a {
+    color: #333;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: #333;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 10px; /* Add padding */
+    margin-right: 20px; /* Add margin to the right */
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 12px; /* Smaller font size */
+    font-family: Roboto, sans-serif; /* Futura font */
+}
+
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #ccc;
+}
+
+
+
+    /* Footer */
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    footer a {
+    color: lightgray;
+  }
+
+  figcaption {
+    font-family: 'EB Garamond', serif;
+        font-size: 10pt;
+        font-weight: bold;
+        color: #333;
+        margin-top: 1px;
+        text-align: left;
+    }
+
+
+</style>
+</head>
+<body>
+
+      <!-- Header -->
+<header>
+    <div class="logo">
+        <a href="https://evidencer.freeweb3.com/" target="_blank">
+            <img src="%F0%9F%94%90%E2%9A%96%EF%B8%8F%202.%20ESI%20Upload%20(2_15)_files/QmRMssmpnd1ZVqoM82oaxbhLVXPiTDfkWA46WfPkYRcTxj.svg" alt="Evidencer">
+        </a>
+    </div>
+  
+  
+    <div class="logo-with-link">
+        <a href="https://evidencer.freeweb3.com/" target="_blank">
+            <img src="%F0%9F%94%90%E2%9A%96%EF%B8%8F%202.%20ESI%20Upload%20(2_15)_files/QmP9tW2r473BdCPGGtK8pY73Eo4zLcNbjE25eGEM13wLYt.png" alt="Evidencer Digital Claim Manager" width="350" height="100">
+            <figcaption style="font-family: 'EB Garamond', serif; margin-left: 20px; font-size: 14pt;">Claim Management System</figcaption>
+        </a>
+    </div>
+  
+  
+    <div class="header-links">
+      <a href="https://lexautomatico.com/" target="_blank">LexAutomatico</a>
+      <a href="https://lex.freeweb3.com/" target="_blank">SmartLaw</a> 
+      <a href="https://web3bits.com/" target="_blank">Courtroom</a> 
+  </div>
+    <div class="nav">
+        <div class="dropdown">
+            <button class="dropbtn">☰</button>
+            <div class="dropdown-content">
+                <a href="https://users.freeweb3.com/" target="_blank">Setup User Account</a>
+                <a href="https://upload.freeweb3.com/" target="_blank">Raw Data Upload</a>
+                <a href="https://encrypted-ipfs-upload.freeweb3.com/" target="_blank">Encrypted JSON Upload</a>
+                <a href="https://image,encrypt.freeweb3.com/" target="_blank">Encrypted Image Upload</a>
+                <a href="https://image.decoder.freeweb3.com/" target="_blank">Image Decoder</a>
+                <a href="https://forms.evidencer.freeweb3.com/" target="_blank">Evidencer Forms</a>
+                <a href="https://query.evidencer.freeweb3.com/" target="_blank">Query Digital Artifacts</a>
+                <a href="https://artifacts.freeweb3.com/" target="_blank">Create Digital Artifacts</a>
+                <a href="https://cidtochain.freeweb3.com/" target="_blank">CID to Chain</a>
+                <a href="https://cidtochainfree.freeweb3.com/" target="_blank">CID to Chain Free</a>
+            </div>
+        </div>
+  
+  
+        <div class="additional-element"></div> <!-- New element -->
+        <div class="nav">
+            <div class="dropdown">
+                <button class="dropbtn">≪</button>
+            </div>
+        </div>
+        
+        <div class="additional-element"></div> <!-- New element -->
+        <div class="nav">
+            <div class="dropdown">
+                <button class="dropbtn">≫</button>
+            </div>
+        </div>
+      
+      </div></header>
+  
+  <!-- Second Header -->
+  <header class="second-header">
+    <div class="navigation-links">
+
+    <a href="https://encrypted-ipfs-upload.freeweb3.com/" target="_blank">Encrypted Upload</a>
+
+
+
+    <a href="https://forms.evidencer.freeweb3.com/" target="_blank" style="margin-left: auto;">Evidencer Forms</a>
+
+
+    </div>
+  </header>  
+
+  
+<h1>2. ESI Upload (02/15)</h1>
+<form id="esiContentForm">
+<label for="evidencerFile">Evidencer File:</label>
+<input type="text" id="evidencerFile" name="evidencerFile" minlength="16" required="">
+
+<label for="admissibleEvidence">Select the statement that best describes
+ the information submitted here is true and establishes a foundation as 
+admissible evidence:</label>
+<select id="admissibleEvidence" name="admissibleEvidence">
+<option value="true" selected="selected">True</option>
+<option value="false">False</option>
+</select>
+
+<label for="generalDescription">General Description of the ESI:</label>
+<textarea id="generalDescription" name="generalDescription" rows="4"></textarea>
+
+<label for="foundationalStatement">Foundational Statement of the ESI:</label>
+<input type="text" id="foundationalStatement" name="foundationalStatement">
+
+<label for="additionalFactualStatements">Add additional factual statements to support the authenticity of the ESI:</label>
+<textarea id="additionalFactualStatements" name="additionalFactualStatements" rows="4"></textarea>
+
+<label for="timingESI">Timing of ESI:</label>
+<select id="timingESI" name="timingESI" multiple="multiple">
+<option value="contemporaneously">The ESI appears to have been recorded contemporaneously at the time of the event/incident giving rise to the claim.</option>
+<option value="clientDirection">The ESI was recorded at the direction of the client.</option>
+<option value="claimResolution">Memorialize a record of the claim resolution.</option>
+</select>
+
+
+<hr>
+
+<h2>Elecronically Stored Information Details</h2>
+<div>
+
+<label for="descriptionESI">Description of the ESI:</label>
+<textarea id="descriptionESI" name="descriptionESI" rows="4"></textarea>
+
+<label for="bestESIRepresentation">The ESI that is the best available representation to help prove the claim:</label>
+<textarea id="bestESIRepresentation" name="bestESIRepresentation" rows="4"></textarea>
+
+<label for="testimonialStatement">Testimonial statement related to the ESI:</label>
+<textarea id="testimonialStatement" name="testimonialStatement" rows="4"></textarea>
+
+<label for="relationshipSourceESI">Relationship and source of ESI:</label>
+<textarea id="relationshipSourceESI" name="relationshipSourceESI" rows="4"></textarea>
+
+<label for="reliabilityScore">Reliability Score of the ESI if applicable:</label>
+<input type="number" id="reliabilityScore" name="reliabilityScore" min="1" max="100">
+
+<label for="esiHashes">ESI Hashes:</label>
+<input type="text" id="esiHashes" name="esiHashes" multiple="">
+
+
+<label for="supplementalInformation">Supplemental Information attached to stored ESI:</label>
+<textarea id="supplementalInformation" name="supplementalInformation" rows="4"></textarea>
+
+
+<hr>
+
+<h2>Attestation Details</h2>
+<div>
+    <label>
+        <input type="checkbox" name="coreTestimonialStatements" value="I witnessed this thing personally"> I witnessed this thing personally
+    </label>
+    <!-- Add more checkbox inputs for other attestations -->
+</div>
+<br><br>
+
+<div>
+    <label for="preferredElectronicIdentityHash">Preferred Electronic Identity Hash:</label>
+    <input type="text" id="preferredElectronicIdentityHash" name="preferredElectronicIdentityHash" required="">
+</div>
+
+
+<h3>Additional Attestations</h3>
+<div>
+    <br>
+
+    <label>
+        <input type="checkbox" name="supplementalAttestations" value="Additional attestation 1"> Additional attestation 1
+    </label>
+    <!-- Add more checkbox inputs for additional attestations -->
+</div>
+<br>
+
+<div>
+    <label for="attestation">Select the statement that best describes 
+the information submitted here is true and a complete record to 
+establish an Angelics account in the Evidencer system:</label>
+    <select id="attestation" name="attestation">
+        <option value="" selected="selected">Select Attestation</option>
+        <option value="Attestation and Submission">Attestation and Submission</option>
+        <!-- Add more options if needed -->
+    </select>
+</div>
+<br><br>
+
+<div>
+    <label for="name">Enter your name or other identifying string of 
+information as a signature representing an affirmative act to 
+participate in the Worldlaw system as contributor:</label>
+    <input type="text" id="name" name="name" required="">
+</div>
+
+
+
+<div>
+    <label for="supplementalAttestations">Supplemental Attestations:</label>
+    <textarea id="supplementalAttestations" name="supplementalAttestations" rows="4" cols="50"></textarea>
+</div>
+
+
+
+<h2>Event Date</h2>
+<div>
+    <label for="eventDate">Event Date:</label>
+    <input type="date" id="eventDate" name="eventDate" required="">
+</div>
+<!-- Add more form fields for event date details -->
+
+<h3>Event Date: Date Selector</h3>
+<div>
+    <label for="year">Year:</label>
+    <select id="year" name="year">
+        <option value="" selected="selected">Select Year</option>
+        <!-- Add options for years -->
+        <option value="2000">2000</option>
+        <option value="2001">2001</option>
+        <option value="2002">2002</option>
+        <option value="2003">2003</option>
+        <option value="2004">2004</option>
+        <option value="2005">2005</option>
+        <option value="2006">2006</option>
+        <option value="2007">2007</option>
+        <option value="2008">2008</option>
+        <option value="2009">2009</option>
+        <option value="2010">2010</option>
+        <option value="2011">2011</option>
+        <option value="2012">2012</option>
+        <option value="2013">2013</option>
+        <option value="2014">2014</option>
+        <option value="2015">2015</option>
+        <option value="2016">2016</option>
+        <option value="2017">2017</option>
+        <option value="2018">2018</option>
+        <option value="2019">2019</option>
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+        <!-- Add more years if needed -->
+    </select>
+</div>
+<div>
+    <label for="month">Month:</label>
+    <select id="month" name="month">
+        <option value="" selected="selected">Select Month</option>
+        <!-- Add options for months -->
+        <option value="January">January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option>
+        <option value="September">September</option>
+        <option value="October">October</option>
+        <option value="November">November</option>
+        <option value="December">December</option>
+
+        <!-- Add more months if needed -->
+    </select>
+</div>
+<div>
+    <label for="date">Date:</label>
+    <select id="date" name="date">
+        <option value="" selected="selected">Select Date</option>
+        <!-- Add options for dates -->
+        <option value="1st">On or about the first (1st) day of</option>
+        <option value="2nd">On or about the second (2nd) day of</option>
+        <option value="3rd">On or about the third (3rd) day of</option>
+        <option value="4th">On or about the fourth (4th) day of</option>
+        <option value="5th">On or about the fifth (5th) day of</option>
+        <option value="6th">On or about the sixth (6th) day of</option>
+        <option value="7th">On or about the seventh (7th) day of</option>
+        <option value="8th">On or about the eigth (8th) day of</option>
+        <option value="9th">On or about the ninth (9th) day of</option>
+        <option value="10th">On or about the tenth (10th) day of</option>
+        <option value="11th">On or about the eleventh (11th) day of</option>
+        <option value="12th">On or about the twelfth (12th) day of</option>
+        <option value="13th">On or about the thirteenth (13th) day of</option>
+        <option value="14th">On or about the fourteenth (14th) day of</option>
+        <option value="15th">On or about the fifteenth (15th) day of</option>
+        <option value="16th">On or about the sixteenth (16th) day of</option>
+        <option value="17th">On or about the seventeenth (17th) day of</option>
+        <option value="18th">On or about the eighteenth (18th) day of</option>
+        <option value="19th">On or about the nineteenth (19th) day of</option>
+        <option value="20th">On or about the twentieth (20th) day of</option>
+        <option value="21st">On or about the twenty-first (21st) day of</option>
+        <option value="22nd">On or about the twenty-second (22nd) day of</option>
+        <option value="23rd">On or about the twenty-third (23rd) day of</option>
+        <option value="24th">On or about the twenty-fourth (24th) day of</option>
+        <option value="25th">On or about the twenty-fifth (25th) day of</option>
+        <option value="26th">On or about the twenty-sixth (26th) day of</option>
+        <option value="27th">On or about the twenty-seventh (27th) day of</option>
+        <option value="28th">On or about the twenty-eigth (28th) day of</option>
+        <option value="29th">On or about the twenty-ninth (29th) day of</option>
+        <option value="30th">On or about the thirtieth (30th) day of</option>
+        <option value="31st">On or about the thirty-first (31st) day of</option>
+        
+
+
+
+
+
+
+
+
+
+Submission
+
+    Enter today's date:
+    </select><input type="date" id="submissionDate" name="submissionDate" required="">
+</div>
+
+<div>
+    <label for="esiTrueStatements">I have good reason to believe a claim is legal claim is warranted:</label>
+    <input type="checkbox" id="esiTrueStatements" name="esiTrueStatements">
+</div>
+<br><br>
+
+<div>
+    <label for="electronicSignature">Enter your electronic signature:</label>
+    <input type="text" id="electronicSignature" name="electronicSignature" required="">
+</div>
+
+
+        <!-- Add more date options as needed -->
+    
+</div>
+
+<button type="submit">Submit</button>
+
+<!-- Message indicating file creation and download -->
+<p id="downloadMessage" style="display: none;">Files were created and downloaded locally.</p>
+
+<hr>
+
+
+</form>
+
+<pre id="jsonOutput"></pre>
+
+<br><br>
+<p>You must Create a JSON before saving</p>
+<button id="saveButton" onclick="saveFiles()">Save JSON &amp; TXT</button>
+
+
+  <!-- Footer -->
+  <footer>
+    <p><a href="https://lex.freeweb3.com/" target="_blank">Web3 Legal Engineering © 2024</a></p>
+   </footer>
+
+
+
+<script>
+    document.getElementById('esiContentForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+    
+        // Collect form data
+        const formData = new FormData(this);
+        const formObject = {};
+        formData.forEach((value, key) => {
+            formObject[key] = value;
+        });
+    
+        // Convert form object to JSON string
+        const jsonString = JSON.stringify(formObject, null, 2);
+    
+        // Display JSON data in the UI
+        const jsonOutput = document.getElementById('jsonOutput');
+        jsonOutput.textContent = jsonString;
+    
+        // Save JSON data into a .json file
+        downloadFile(jsonString, 'esi_upload.json', 'application/json');
+    
+        // Show message indicating file creation and download
+        const downloadMessage = document.getElementById('downloadMessage');
+        downloadMessage.style.display = 'block';
+    
+        // Log JSON data
+        console.log(jsonString);
+    });
+    
+    
+    function saveFiles() {
+        const jsonData = document.getElementById('jsonOutput').textContent;
+
+        // Prompt the user to confirm filenames
+        const jsonFilename = prompt('Enter filename for JSON file:', 'esi-0001.json');
+        const txtFilename = prompt('Enter filename for TXT file:', 'esi-0001.txt');
+
+        if (jsonFilename && txtFilename) {
+            // Save JSON data to files
+            saveToFile(jsonData, jsonFilename);
+            saveToFile(jsonData, txtFilename);
+
+            // Show message indicating file creation and download
+            showMessage('Files created and downloaded successfully.');
+        } else {
+            showMessage('Filename(s) not provided. Files not saved.');
+        }
+    }
+
+    function saveToFile(data, filename) {
+        const blob = new Blob([data], { type: 'application/json' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        link.click();
+    }
+
+    function showMessage(message) {
+        alert(message);
+    }
+
+</script>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+</body></html>

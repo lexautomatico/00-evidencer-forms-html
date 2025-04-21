@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✨🔐&nbsp;Mnemonic Bytecode Rebuilder</title>
+
+<!-- Windows Tiles -->
+<meta name="msapplication-TileImage" content="/path/to/ms-tile-icon.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<!-- EB Garamond -->
+<link rel="stylesheet" href="%E2%9C%A8%F0%9F%94%90%20Mnemonic%20Bytecode%20Rebuilder_files/css2_003.css">
+<!-- Roboto -->
+<link rel="stylesheet" href="%E2%9C%A8%F0%9F%94%90%20Mnemonic%20Bytecode%20Rebuilder_files/css2_002.css">
+<!-- Lato -->
+<link rel="stylesheet" href="%E2%9C%A8%F0%9F%94%90%20Mnemonic%20Bytecode%20Rebuilder_files/css2.css">
+
+<style>
+.modeButton, .colorButton {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+</style>
+<style>
+
+.modeButton,
+    .colorButton {
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+
+    body {
+    /* font-family: EB Garamond, san-serif; */
+    font-family: Roboto, serif;
+    /* font-family: Lato, serif; */
+    /* font-family: Futura, serif; */
+    
+    margin: 0;
+      padding: 20px; /* Add some padding */
+    }
+  
+    h1 {
+        text-align: left;
+    }
+  
+    form {
+      background-color: #f9f9f9; /* Light gray background */
+      border-radius: 10px; /* Rounded corners */
+      padding: 20px; /* Add some padding */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+      margin-bottom: 20px; /* Add some margin at the bottom */
+    }
+  
+    form label {
+      display: block;
+      margin-bottom: 5px;
+    }
+  
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="tel"],
+    form select,
+    form input[type="date"],
+    form input[type="datetime-local"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc; /* Gray border */
+      border-radius: 5px; /* Rounded corners */
+      box-sizing: border-box;
+    }
+  
+    button {
+      background-color: #4CAF50; /* Green */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  
+    button:hover {
+      background-color: #45a049; /* Darker green on hover */
+    }
+  
+    #jsonOutput {
+      margin-top: 20px; /* Add some space between form and JSON output */
+    }
+  
+    .selected-image {
+            border: 2px solid red; /* Example highlight style */
+        }
+
+        .output-box {
+    border: 2px solid #ccc; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Padding inside the box */
+    margin-bottom: 20px; /* Margin below the box */
+}
+
+.output-box h4 {
+    margin-top: 0; /* Remove margin from the top of the heading */
+}
+
+.output-box h3 {
+    margin-bottom: 0; /* Remove margin from the bottom of the text */
+}
+
+.information-section {
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+
+
+#passcodeSlider {
+    width: calc(100% - 20px); /* Adjust width to span the width of the browser with 20px right margin */
+    margin-right: 20px; /* Add 20px right margin */
+}
+
+
+#saveButton {
+  background-color: #337ab7; /* Blue color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#saveButton:hover {
+  background-color: #286090; /* Darker blue on hover */
+}
+
+
+
+
+    /* Header */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f0f0f0;
+        padding: 10px 20px;
+    }
+
+    .logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    .logo img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .header-links {
+    display: flex;
+    align-items: center;
+}
+
+.header-links .logo-with-link {
+    margin-right: 20px; /* Adjust as needed */
+}
+
+
+
+.header-links a {
+        margin-right: 20px; /* Adjust spacing between links */
+        font-family: "Lato", sans-serif; /* Apply Futura font */
+        color: #333; /* Text color */
+        text-decoration: none; /* Remove default underline */
+        padding: 5px 10px; /* Add padding around each link */
+        border-radius: 5px; /* Add rounded corners */
+        background-color: #f0f0f0; /* Background color */
+        transition: background-color 0.3s ease; /* Smooth transition */
+    }
+
+    .header-links a:hover {
+        background-color: #ccc; /* Darker background color on hover */
+    }
+
+
+
+
+
+
+
+
+    .nav {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav li {
+        margin-right: 20px;
+    }
+
+    .nav li:last-child {
+        margin-right: 0;
+    }
+
+
+
+
+
+/* Second Header */
+.second-header {
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation-links {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Ensure it takes up the full width */
+}
+
+.navigation-links a {
+    color: #333;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: #333;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 10px; /* Add padding */
+    margin-right: 20px; /* Add margin to the right */
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 12px; /* Smaller font size */
+    font-family: Roboto, sans-serif; /* Futura font */
+}
+
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #ccc;
+}
+
+
+
+    /* Footer */
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    footer a {
+    color: lightgray;
+  }
+
+  figcaption {
+    font-family: 'EB Garamond', serif;
+        font-size: 10pt;
+        font-weight: bold;
+        color: #333;
+        margin-top: 1px;
+        text-align: left;
+    }
+
+
+  </style></head>
+
+<body>
+      <!-- Header -->
+<header>
+    <div class="logo">
+        <a href="https://evidencer.freeweb3.com/" target="_blank">
+            <img src="%E2%9C%A8%F0%9F%94%90%20Mnemonic%20Bytecode%20Rebuilder_files/QmRMssmpnd1ZVqoM82oaxbhLVXPiTDfkWA46WfPkYRcTxj.svg" alt="Evidencer">
+        </a>
+    </div>
+  
+  
+    <div class="logo-with-link">
+        <a href="https://evidencer.freeweb3.com/" target="_blank">
+            <img src="%E2%9C%A8%F0%9F%94%90%20Mnemonic%20Bytecode%20Rebuilder_files/QmP9tW2r473BdCPGGtK8pY73Eo4zLcNbjE25eGEM13wLYt.png" alt="Evidencer Digital Claim Manager" width="350" height="100">
+            <figcaption style="font-family: 'EB Garamond', serif; margin-left: 20px; font-size: 14pt;">Claim Management System</figcaption>
+        </a>
+    </div>
+  
+  
+    <div class="header-links">
+      <a href="https://lexautomatico.com/" target="_blank">LexAutomatico</a>
+      <a href="https://lex.freeweb3.com/" target="_blank">SmartLaw</a> 
+      <a href="https://web3bits.com/" target="_blank">Courtroom</a> 
+  </div>
+    <div class="nav">
+        <div class="dropdown">
+            <button class="dropbtn">☰</button>
+            <div class="dropdown-content">
+                <a href="https://users.freeweb3.com/" target="_blank">Setup User Account</a>
+                <a href="https://upload.freeweb3.com/" target="_blank">Raw Data Upload</a>
+                <a href="https://encrypted-ipfs-upload.freeweb3.com/" target="_blank">Encrypted JSON Upload</a>
+                <a href="https://image,encrypt.freeweb3.com/" target="_blank">Encrypted Image Upload</a>
+                <a href="https://image.decoder.freeweb3.com/" target="_blank">Image Decoder</a>
+                <a href="https://forms.evidencer.freeweb3.com/" target="_blank">Evidencer Forms</a>
+                <a href="https://query.evidencer.freeweb3.com/" target="_blank">Query Digital Artifacts</a>
+                <a href="https://artifacts.freeweb3.com/" target="_blank">Create Digital Artifacts</a>
+                <a href="https://cidtochain.freeweb3.com/" target="_blank">CID to Chain</a>
+                <a href="https://cidtochainfree.freeweb3.com/" target="_blank">CID to Chain Free</a>
+            </div>
+
+        </div>
+  
+  
+        <div class="additional-element"></div> <!-- New element -->
+        <div class="nav">
+            <div class="dropdown">
+                <button class="dropbtn">≪</button>
+            </div>
+        </div>
+        
+        <div class="additional-element"></div> <!-- New element -->
+        <div class="nav">
+            <div class="dropdown">
+                <button class="dropbtn">≫</button>
+            </div>
+        </div>
+      
+      </div></header>
+  
+  <!-- Second Header -->
+  <header class="second-header">
+    <div class="navigation-links">
+
+    <a href="https://encrypted-ipfs-upload.freeweb3.com/" target="_blank">Encrypted Upload</a>
+
+
+
+    <a href="https://forms.evidencer.freeweb3.com/" target="_blank" style="margin-left: auto;">Evidencer Forms</a>
+
+
+    </div>
+  </header>  
+
+  
+
+<h1>Mnemonic Bytecode Rebuilder</h1>
+<form id="identityForm">
+
+
+<!-- New Form Fields -->
+<fieldset>
+<legend>Custom Selector</legend>
+<label for="season">Select a season to be added to the mnemonic:</label><br>
+<select id="season" name="season">
+<option value="winter" selected="selected">Winter</option>
+<option value="spring">Spring</option>
+<option value="summer">Summer</option>
+<option value="fall">Fall</option>
+</select><br><br>
+
+<label for="color">Select a color to build your security mnemonic:</label><br>
+<select id="color" name="color">
+<option value="#000000" selected="selected">Black</option>
+<option value="#0000ff">Blue</option>
+<option value="#00ffff">Cyan</option>
+<option value="#ffff00">Yellow</option>
+<option value="#ff0000">Red</option>
+<option value="#4b0082">Indigo</option>
+<option value="#ffa500">Orange</option>
+<option value="#00ff00">Green</option>
+<option value="#ff00ff">Violet</option>
+<option value="#FFC0CB">Pink</option>
+</select><br><br>
+
+<label for="modeOfTransportation">Select a mode to be added to the mnemonic:</label><br>
+<select id="modeOfTransportation" name="modeOfTransportation">
+<option value="skateboard" selected="selected">Skateboard</option>
+<option value="bicycle">Bicycle</option>
+<option value="car">Car</option>
+<option value="pickup">Pickup</option>
+<option value="truck">Truck</option>
+<option value="train">Train</option>
+<option value="boat">Boat</option>
+<option value="submarine">Submarine</option>
+<option value="airplane">Airplane</option>
+<option value="rocketship">Rocketship</option>
+</select><br><br>
+
+<label for="fourDigitPasscode">Enter a memorable four-digit number:</label><br>
+<input type="range" id="passcodeSlider" name="fourDigitPasscode" min="1000" max="9999" oninput="updatePasscodeValue(this.value)" value="5500">
+<input type="number" id="fourDigitPasscode" name="fourDigitPasscode" min="1000" max="9999" required=""><br><br>
+</fieldset>
+
+<!-- End of New Form Fields -->
+
+<!-- <button type="button" onclick="generateJSON()">Generate JSON</button> -->
+<button type="button" onclick="generateBytecode()">Generate Bytecode</button>
+</form>
+
+
+<div class="output-box">
+
+<h4>Comma Separated Version</h4>
+<h3 id="commaSeparatedBytecodeOutput"></h3>
+<hr>
+<h4>Bytecode Tester</h4>
+<h3 id="rawBytecodeOutput"></h3>
+
+<hr>
+
+
+
+<h2>Bytecode Tester</h2>
+<label for="bytecodeInput">Enter the bytecode (comma-separated):</label>
+<input type="text" id="bytecodeInput">
+<button onclick="testBytecode()">Test Bytecode</button>
+<p id="bytecodeResult"></p>
+
+<!-- Second Test Bytecode Section -->
+<h2>Second Bytecode Tester</h2>
+<label for="secondBytecodeInput">Enter the second bytecode (without commas):</label>
+<input type="text" id="secondBytecodeInput">
+<button onclick="testSecondBytecode()">Test Second Bytecode</button>
+<p id="secondBytecodeResult"></p>
+<!-- End of Second Test Bytecode Section -->
+
+
+
+</div>
+
+
+<div class="information-section">
+    <h2>Unique Combinations</h2>
+    <p>
+        Four seasons, 
+        Ten colors, 
+        Ten modes of transportation,
+        8,999 four-digit integers (ranging from 1000 to 9999)
+    </p>
+    <h4>The total number of unique results by multiplying the number of choices for each category:</h4>
+    <p>
+        Total number of unique results = (Number of seasons) × (Number 
+of colors) × (Number of modes of transportation) × (Number of four-digit
+ integers)
+    </p>
+    <p>
+        Total number of unique results = 4 × 10 × 10 × 8,999  = <span class="result">359,960</span><br><br>
+    </p>
+    <h3>There are <span class="result">359,960</span> unique results that can be made based on the given choices.</h3>
+</div>
+
+  <!-- Footer -->
+  <footer>
+    <p><a href="https://lex.freeweb3.com/" target="_blank">Web3 Legal Engineering © 2024</a></p>
+   </footer>
+
+
+<script>
+
+
+
+
+
+
+function setSeason(season) {
+    document.getElementById('season').value = season;
+}
+
+function setMode(mode) {
+    document.getElementById('modeOfTransportation').value = mode;
+}
+
+function setColor(color) {
+    document.getElementById('color').value = color;
+}
+
+function updatePasscodeValue(value) {
+    document.getElementById('fourDigitPasscode').value = value;
+}
+
+
+function generateBytecode() {
+    const season = document.getElementById('season').value;
+    const color = document.getElementById('color').value;
+    const mode = document.getElementById('modeOfTransportation').value;
+    const fourDigitPasscode = document.getElementById('fourDigitPasscode').value;
+
+    // Check if the passcode is within the valid range
+    if (fourDigitPasscode < 1000 || fourDigitPasscode > 9999) {
+        alert('Please enter a four-digit passcode between 1000 and 9999.');
+        return; // Exit the function if passcode is invalid
+    }
+
+    const passwordBytes = new Uint8Array([
+        ...season.split('').map(char => char.charCodeAt(0)),
+        ...color.slice(1).split('').map(char => char.charCodeAt(0)),
+        ...mode.split('').map(char => char.charCodeAt(0)),
+        ...fourDigitPasscode.split('').map(char => char.charCodeAt(0))
+    ]);
+
+    let commaSeparatedBytecode = passwordBytes.join(',');
+    
+    let rawBytecode = '';
+    for (let i = 0; i < passwordBytes.length; i++) {
+        rawBytecode += passwordBytes[i].toString(16).padStart(2, '0');
+    }
+
+    document.getElementById('rawBytecodeOutput').textContent = rawBytecode;
+    document.getElementById('commaSeparatedBytecodeOutput').textContent = commaSeparatedBytecode;
+}
+
+
+
+
+function testBytecode() {
+    const bytecodeInput = document.getElementById('bytecodeInput').value;
+    const bytecodeArray = bytecodeInput.split(',').map(byte => parseInt(byte));
+    const passwordBytes = new Uint8Array(bytecodeArray);
+
+    const seasonLength = 6;
+    const colorLength = 6;
+    const modeLength = 10;
+    const passcodeLength = 4;
+
+    const season = String.fromCharCode(...passwordBytes.slice(0, seasonLength));
+    const color = '#' + String.fromCharCode(...passwordBytes.slice(seasonLength, seasonLength + colorLength));
+    const mode = String.fromCharCode(...passwordBytes.slice(seasonLength + colorLength, seasonLength + colorLength + modeLength));
+    const fourDigitPasscode = String.fromCharCode(...passwordBytes.slice(seasonLength + colorLength + modeLength, seasonLength + colorLength + modeLength + passcodeLength));
+
+    // Correct formatting of the result string
+    // const result = `Season: ${season}\nColor: ${color}\nMode of Transportation: ${mode}\nFour-digit Passcode: ${fourDigitPasscode}`;
+    const result = `${season}${color}${mode}${fourDigitPasscode}`;
+    document.getElementById('bytecodeResult').textContent = result;
+}
+
+// Function to test the second bytecode
+function testSecondBytecode() {
+    const bytecodeInput = document.getElementById('secondBytecodeInput').value;
+    const passwordBytes = new Uint8Array(bytecodeInput.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+
+    const seasonLength = 6;
+    const colorLength = 6;
+    const modeLength = 10;
+    const passcodeLength = 4;
+
+    const season = String.fromCharCode(...passwordBytes.slice(0, seasonLength));
+    const color = '#' + String.fromCharCode(...passwordBytes.slice(seasonLength, seasonLength + colorLength));
+    const mode = String.fromCharCode(...passwordBytes.slice(seasonLength + colorLength, seasonLength + colorLength + modeLength));
+    const fourDigitPasscode = String.fromCharCode(...passwordBytes.slice(seasonLength + colorLength + modeLength, seasonLength + colorLength + modeLength + passcodeLength));
+
+    // Correct formatting of the result string
+    // const result = `Season: ${season}\nColor: ${color}\nMode of Transportation: ${mode}\nFour-digit Passcode: ${fourDigitPasscode}`;
+    const result = `${season}${color}${mode}${fourDigitPasscode}`;
+    document.getElementById('secondBytecodeResult').textContent = result;
+}
+
+
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+</body></html>

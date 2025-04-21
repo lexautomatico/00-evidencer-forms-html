@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔐⚖️&nbsp;8. Jurisdiction Information</title>
+  <!-- EB Garamond -->
+<link rel="stylesheet" href="%F0%9F%94%90%E2%9A%96%EF%B8%8F%208.%20Jurisdiction%20Information_files/css2_003.css">
+<!-- Roboto -->
+<link rel="stylesheet" href="%F0%9F%94%90%E2%9A%96%EF%B8%8F%208.%20Jurisdiction%20Information_files/css2_002.css">
+<!-- Lato -->
+<link rel="stylesheet" href="%F0%9F%94%90%E2%9A%96%EF%B8%8F%208.%20Jurisdiction%20Information_files/css2.css">
+
+<style>
+  body {
+    /* font-family: EB Garamond, san-serif; */
+    font-family: Roboto, serif;
+    /* font-family: Lato, serif; */
+    /* font-family: Futura, serif; */
+
+    margin: 0;
+    padding: 20px; /* Add some padding */
+  }
+
+  h1 {
+    text-align: left;
+  }
+
+  form {
+    background-color: #f9f9f9; /* Light gray background */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Add some padding */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    margin-bottom: 20px; /* Add some margin at the bottom */
+  }
+
+  form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="tel"],
+  form select,
+  form input[type="date"],
+  form input[type="datetime-local"],
+  form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 5px; /* Rounded corners */
+    box-sizing: border-box;
+  }
+
+  button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+
+  #jsonOutput {
+    margin-top: 20px; /* Add some space between form and JSON output */
+  }
+
+  .slider-container {
+    position: relative;
+    width: 100%;
+  }
+
+  .slider-value {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  table tr {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  table td {
+    width: 30%; /* Adjust width of table cells */
+  }
+
+  #saveButton {
+  background-color: #337ab7; /* Blue color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#saveButton:hover {
+  background-color: #286090; /* Darker blue on hover */
+}
+
+
+
+
+
+
+    /* Header */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f0f0f0;
+        padding: 10px 20px;
+    }
+
+    .logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    .logo img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .header-links {
+    display: flex;
+    align-items: center;
+}
+
+.header-links .logo-with-link {
+    margin-right: 20px; /* Adjust as needed */
+}
+
+
+
+.header-links a {
+        margin-right: 20px; /* Adjust spacing between links */
+        font-family: "Lato", sans-serif; /* Apply Futura font */
+        color: #333; /* Text color */
+        text-decoration: none; /* Remove default underline */
+        padding: 5px 10px; /* Add padding around each link */
+        border-radius: 5px; /* Add rounded corners */
+        background-color: #f0f0f0; /* Background color */
+        transition: background-color 0.3s ease; /* Smooth transition */
+    }
+
+    .header-links a:hover {
+        background-color: #ccc; /* Darker background color on hover */
+    }
+
+
+
+
+
+
+
+
+    .nav {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav li {
+        margin-right: 20px;
+    }
+
+    .nav li:last-child {
+        margin-right: 0;
+    }
+
+
+
+
+
+/* Second Header */
+.second-header {
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation-links {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Ensure it takes up the full width */
+}
+
+.navigation-links a {
+    color: #333;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: #333;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 10px; /* Add padding */
+    margin-right: 20px; /* Add margin to the right */
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 12px; /* Smaller font size */
+    font-family: Roboto, sans-serif; /* Futura font */
+}
+
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #ccc;
+}
+
+
+
+    /* Footer */
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    footer a {
+    color: lightgray;
+  }
+
+  figcaption {
+    font-family: 'EB Garamond', serif;
+        font-size: 10pt;
+        font-weight: bold;
+        color: #333;
+        margin-top: 1px;
+        text-align: left;
+    }
+
+
+
+
+
+</style></head>
+
+
+<body>
+
+    <!-- Header -->
+<header>
+  <div class="logo">
+      <a href="https://evidencer.freeweb3.com/" target="_blank">
+          <img src="%F0%9F%94%90%E2%9A%96%EF%B8%8F%208.%20Jurisdiction%20Information_files/QmRMssmpnd1ZVqoM82oaxbhLVXPiTDfkWA46WfPkYRcTxj.svg" alt="Evidencer">
+      </a>
+  </div>
+
+
+  <div class="logo-with-link">
+      <a href="https://evidencer.freeweb3.com/" target="_blank">
+          <img src="%F0%9F%94%90%E2%9A%96%EF%B8%8F%208.%20Jurisdiction%20Information_files/QmP9tW2r473BdCPGGtK8pY73Eo4zLcNbjE25eGEM13wLYt.png" alt="Evidencer Digital Claim Manager" width="350" height="100">
+          <figcaption style="font-family: 'EB Garamond', serif; margin-left: 20px; font-size: 14pt;">Claim Management System</figcaption>
+      </a>
+  </div>
+
+
+  <div class="header-links">
+    <a href="https://lexautomatico.com/" target="_blank">LexAutomatico</a>
+    <a href="https://lex.freeweb3.com/" target="_blank">SmartLaw</a> 
+    <a href="https://web3bits.com/" target="_blank">Courtroom</a> 
+</div>
+  <div class="nav">
+      <div class="dropdown">
+          <button class="dropbtn">☰</button>
+          <div class="dropdown-content">
+            <a href="https://users.freeweb3.com/" target="_blank">Setup User Account</a>
+            <a href="https://upload.freeweb3.com/" target="_blank">Raw Data Upload</a>
+            <a href="https://encrypted-ipfs-upload.freeweb3.com/" target="_blank">Encrypted JSON Upload</a>
+            <a href="https://image,encrypt.freeweb3.com/" target="_blank">Encrypted Image Upload</a>
+            <a href="https://image.decoder.freeweb3.com/" target="_blank">Image Decoder</a>
+            <a href="https://forms.evidencer.freeweb3.com/" target="_blank">Evidencer Forms</a>
+            <a href="https://query.evidencer.freeweb3.com/" target="_blank">Query Digital Artifacts</a>
+            <a href="https://artifacts.freeweb3.com/" target="_blank">Create Digital Artifacts</a>
+            <a href="https://cidtochain.freeweb3.com/" target="_blank">CID to Chain</a>
+            <a href="https://cidtochainfree.freeweb3.com/" target="_blank">CID to Chain Free</a>
+        </div>
+      </div>
+
+
+      <div class="additional-element"></div> <!-- New element -->
+      <div class="nav">
+          <div class="dropdown">
+              <button class="dropbtn">≪</button>
+          </div>
+      </div>
+      
+      <div class="additional-element"></div> <!-- New element -->
+      <div class="nav">
+          <div class="dropdown">
+              <button class="dropbtn">≫</button>
+          </div>
+      </div>
+    
+    </div></header>
+
+  <!-- Second Header -->
+  <header class="second-header">
+    <div class="navigation-links">
+
+    <a href="https://encrypted-ipfs-upload.freeweb3.com/" target="_blank">Encrypted Upload</a>
+
+
+
+    <a href="https://forms.evidencer.freeweb3.com/" target="_blank" style="margin-left: auto;">Evidencer Forms</a>
+
+
+    </div>
+  </header>
+
+
+  <h1>8. Jurisdiction Information (8/15)</h1>
+  <form id="jurisdictionForm">
+
+    <h2>Jurisdictional Capacity</h2>
+    <label for="ageVerification">Age Verification:</label>
+    <input type="checkbox" id="ageVerification" name="ageVerification" value="true"><br><br>
+
+    <table>
+      <tbody><tr>
+        <td>
+          <label for="ageOfClaimant">Age of Claimant:</label>
+          <input type="number" id="ageOfClaimant" name="ageOfClaimant" min="0" max="120" value="0"><br><br>
+        </td>
+        <td>
+          <label for="ageOfClient">Age of Client:</label>
+          <input type="number" id="ageOfClient" name="ageOfClient" min="0" max="120" value="0"><br><br>
+        </td>
+        <td>
+          <label for="ageCapacity">Age of User:</label>
+          <input type="number" id="ageCapacity" name="ageCapacity" min="0" max="120" value="0" required=""><br><br>
+        </td>
+      </tr>
+    </tbody></table>
+     
+    
+    
+    
+    <label for="resolutionVerificationContact">Resolution Verification Contact:</label>
+    <input type="text" id="resolutionVerificationContact" name="resolutionVerificationContact"><br><br>
+    
+    
+
+    <h2>Occurrence Jurisdiction</h2>
+    <label for="singleIncident">Single Incident:</label>
+    <input type="checkbox" id="singleIncident" name="singleIncident" value="true"><br><br>
+    <label for="numberOfInstances">Number of Instances:</label>
+    <select id="numberOfInstances" name="numberOfInstances">
+      <option value="1" selected="selected">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select><br><br>
+
+    <h2>Personal Jurisdiction</h2>
+    <label for="identityLatitude">Identity Latitude:</label>
+    <input type="text" id="identityLatitude" name="identityLatitude" required=""><br><br>
+    <label for="esiLatitude">ESI Latitude:</label>
+    <input type="text" id="esiLatitude" name="esiLatitude" required=""><br><br>
+    <label for="identityLongitude">Identity Longitude:</label>
+    <input type="text" id="identityLongitude" name="identityLongitude" required=""><br><br>
+    <label for="esiLongitude">ESI Longitude:</label>
+    <input type="text" id="esiLongitude" name="esiLongitude" required=""><br><br>
+    <label for="citizenship">Citizenship:</label>
+    <select id="citizenship" name="citizenship" required="">
+      <option value="" selected="selected">Select Citizenship</option>
+      <option value="US">United States of America</option>
+      <option value="Other">Other Country</option>
+    </select><br><br>
+
+    <h2>Subject Matter Occurrence</h2>
+    <label for="claimantVictimOfLegalWrong">Claimant Victim of Legal Wrong:</label>
+    <input type="checkbox" id="claimantVictimOfLegalWrong" name="claimantVictimOfLegalWrong" value="true"><br><br>
+    <label for="shortDescription">Short Description of Events:</label>
+    <textarea id="shortDescription" name="shortDescription" rows="4"></textarea><br><br>
+    <label for="detailedDescription">Detailed Description of Events:</label>
+    <textarea id="detailedDescription" name="detailedDescription" rows="4"></textarea><br><br>
+
+    <h2>Subject Matter Jurisdiction</h2>
+    <label for="masterClaimType">Master Claim Type:</label>
+    <input type="text" id="masterClaimType" name="masterClaimType" required=""><br><br>
+    <label for="involvement">Involvement in the Claim:</label>
+    <input type="text" id="involvement" name="involvement" required=""><br><br>
+    <label for="legalCategory">Legal Category of the Claim:</label>
+    <input type="text" id="legalCategory" name="legalCategory" required=""><br><br>
+    <label for="reliefUnderUSLaws">Relief Under US Laws:</label>
+    <input type="checkbox" id="reliefUnderUSLaws" name="reliefUnderUSLaws" value="true"><br><br>
+    <label for="agentCounty">Agent County:</label>
+    <input type="text" id="agentCounty" name="agentCounty"><br><br>
+    <label for="agentState">Agent State:</label>
+    <input type="text" id="agentState" name="agentState"><br><br>
+    <label for="claimantCounty">Claimant County:</label>
+    <input type="text" id="claimantCounty" name="claimantCounty"><br><br>
+    <label for="claimantState">Claimant State:</label>
+    <input type="text" id="claimantState" name="claimantState"><br><br>
+    <label for="subjectMatterEsiLatitude">ESI Latitude:</label>
+    <input type="text" id="subjectMatterEsiLatitude" name="subjectMatterEsiLatitude" required=""><br><br>
+    <label for="subjectMatterEsiLongitude">ESI Longitude:</label>
+    <input type="text" id="subjectMatterEsiLongitude" name="subjectMatterEsiLongitude" required=""><br><br>
+
+    <button type="button" onclick="submitData()">Submit</button>
+  </form>
+
+  <pre id="jsonOutput"></pre>
+
+  <br><br>
+<p>You must Create a JSON before saving</p>
+<button id="saveButton" onclick="saveFiles()">Save JSON &amp; TXT</button>
+
+
+  <!-- Footer -->
+  <footer>
+    <p><a href="https://lex.freeweb3.com/" target="_blank">Web3 Legal Engineering © 2024</a></p>
+   </footer>
+
+
+
+
+  <script>
+    function submitData() {
+      const jurisdictionData = {
+        jurisdictionalCapacity: {
+          ageVerification: document.getElementById('ageVerification').checked,
+          ageOfClaimant: document.getElementById('ageOfClaimant').value,
+          ageOfClient: document.getElementById('ageOfClient').value,
+          ageCapacity: document.getElementById('ageCapacity').value,
+          resolutionVerificationContact: document.getElementById('resolutionVerificationContact').value
+        },
+
+        occurrenceJurisdiction: {
+          singleIncident: document.getElementById('singleIncident').checked,
+          numberOfInstances: document.getElementById('numberOfInstances').value
+        },
+        personalJurisdiction: {
+          identityLatitude: document.getElementById('identityLatitude').value,
+          esiLatitude: document.getElementById('esiLatitude').value,
+          identityLongitude: document.getElementById('identityLongitude').value,
+          esiLongitude: document.getElementById('esiLongitude').value,
+          citizenship: document.getElementById('citizenship').value
+        },
+        subjectMatterOccurrence: {
+          claimantVictimOfLegalWrong: document.getElementById('claimantVictimOfLegalWrong').checked,
+          shortDescription: document.getElementById('shortDescription').value,
+          detailedDescription: document.getElementById('detailedDescription').value
+        },
+        subjectMatterJurisdiction: {
+          masterClaimType: document.getElementById('masterClaimType').value,
+          involvement: document.getElementById('involvement').value,
+          legalCategory: document.getElementById('legalCategory').value,
+          reliefUnderUSLaws: document.getElementById('reliefUnderUSLaws').checked,
+          agentLocation: {
+            county: document.getElementById('agentCounty').value,
+            state: document.getElementById('agentState').value
+          },
+          claimantLocation: {
+            county: document.getElementById('claimantCounty').value,
+            state: document.getElementById('claimantState').value
+          },
+          esiLatitude: document.getElementById('subjectMatterEsiLatitude').value,
+          esiLongitude: document.getElementById('subjectMatterEsiLongitude').value
+        }
+      };
+
+      const jsonString = JSON.stringify(jurisdictionData, null, 2);
+      console.log(jsonString);
+      document.getElementById('jsonOutput').textContent = jsonString;
+    }
+
+    // Helper function to attach event listener and update values
+    function attachSliderEventListener(sliderId, displayId) {
+      const slider = document.getElementById(sliderId);
+      const display = document.getElementById(displayId);
+      const inputField = document.getElementById(sliderId);
+
+      slider.addEventListener('input', () => {
+        display.textContent = `${slider.value} years`;
+        inputField.value = slider.value;
+      });
+    }
+
+    // Attach event listeners for sliders
+    attachSliderEventListener('ageOfClaimant', 'ageOfClaimantValue');
+    attachSliderEventListener('ageOfClient', 'ageOfClientValue');
+    attachSliderEventListener('ageCapacity', 'ageCapacityValue');
+    
+
+    function saveFiles() {
+        const jsonData = document.getElementById('jsonOutput').textContent;
+
+        // Prompt the user to confirm filenames
+        const jsonFilename = prompt('Enter filename for JSON file:', 'jurisdiction.json');
+        const txtFilename = prompt('Enter filename for TXT file:', 'jurisdiction.txt');
+
+        if (jsonFilename && txtFilename) {
+            // Save JSON data to files
+            saveToFile(jsonData, jsonFilename);
+            saveToFile(jsonData, txtFilename);
+
+            // Show message indicating file creation and download
+            showMessage('Files created and downloaded successfully.');
+        } else {
+            showMessage('Filename(s) not provided. Files not saved.');
+        }
+    }
+
+    function saveToFile(data, filename) {
+        const blob = new Blob([data], { type: 'application/json' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        link.click();
+    }
+
+    function showMessage(message) {
+        alert(message);
+    }
+
+
+  </script>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+</body></html>

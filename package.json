@@ -1,0 +1,12 @@
+{
+  "name": "00-EVIDENCER-FORMS-HTML",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "echo 'Add your start script here'",
+    "build": "echo 'Add your build script here'",
+    "test": "echo 'Add your test script here'"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

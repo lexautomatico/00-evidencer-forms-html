@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔐⚖️&nbsp;9. Claim Attestation</title>
+<!-- EB Garamond -->
+<link rel="stylesheet" href="%F0%9F%94%90%E2%9A%96%EF%B8%8F%209.%20Claim%20Attestation_files/css2_003.css">
+<!-- Roboto -->
+<link rel="stylesheet" href="%F0%9F%94%90%E2%9A%96%EF%B8%8F%209.%20Claim%20Attestation_files/css2_002.css">
+<!-- Lato -->
+<link rel="stylesheet" href="%F0%9F%94%90%E2%9A%96%EF%B8%8F%209.%20Claim%20Attestation_files/css2.css">
+
+<style>
+  body {
+    /* font-family: EB Garamond, san-serif; */
+    font-family: Roboto, serif;
+    /* font-family: Lato, serif; */
+    /* font-family: Futura, serif; */
+    
+    margin: 0;
+    padding: 20px; /* Add some padding */
+  }
+
+  h1 {
+    text-align: left;
+  }
+
+  form {
+    background-color: #f9f9f9; /* Light gray background */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Add some padding */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    margin-bottom: 20px; /* Add some margin at the bottom */
+  }
+
+  form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="tel"],
+  form select,
+  form input[type="date"],
+  form input[type="datetime-local"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 5px; /* Rounded corners */
+    box-sizing: border-box;
+  }
+
+  form textarea {
+    width: calc(100% - 16px); /* Adjust width to fit within the form padding */
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 5px; /* Rounded corners */
+    box-sizing: border-box;
+    height: 100px; /* Set height for textarea */
+  }
+
+  button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+
+  #jsonOutput {
+    margin-top: 20px; /* Add some space between form and JSON output */
+  }
+
+  fieldset {
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  legend {
+    font-weight: bold;
+  }
+
+  #saveButton {
+  background-color: #337ab7; /* Blue color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#saveButton:hover {
+  background-color: #286090; /* Darker blue on hover */
+}
+
+
+
+
+
+
+    /* Header */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f0f0f0;
+        padding: 10px 20px;
+    }
+
+    .logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    .logo img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .header-links {
+    display: flex;
+    align-items: center;
+}
+
+.header-links .logo-with-link {
+    margin-right: 20px; /* Adjust as needed */
+}
+
+
+
+.header-links a {
+        margin-right: 20px; /* Adjust spacing between links */
+        font-family: "Lato", sans-serif; /* Apply Futura font */
+        color: #333; /* Text color */
+        text-decoration: none; /* Remove default underline */
+        padding: 5px 10px; /* Add padding around each link */
+        border-radius: 5px; /* Add rounded corners */
+        background-color: #f0f0f0; /* Background color */
+        transition: background-color 0.3s ease; /* Smooth transition */
+    }
+
+    .header-links a:hover {
+        background-color: #ccc; /* Darker background color on hover */
+    }
+
+
+
+
+
+
+
+
+    .nav {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav li {
+        margin-right: 20px;
+    }
+
+    .nav li:last-child {
+        margin-right: 0;
+    }
+
+
+
+
+
+/* Second Header */
+.second-header {
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation-links {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Ensure it takes up the full width */
+}
+
+.navigation-links a {
+    color: #333;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: #333;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 10px; /* Add padding */
+    margin-right: 20px; /* Add margin to the right */
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 12px; /* Smaller font size */
+    font-family: Roboto, sans-serif; /* Futura font */
+}
+
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #ccc;
+}
+
+
+
+    /* Footer */
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    footer a {
+    color: lightgray;
+  }
+
+  figcaption {
+    font-family: 'EB Garamond', serif;
+        font-size: 10pt;
+        font-weight: bold;
+        color: #333;
+        margin-top: 1px;
+        text-align: left;
+    }
+
+
+
+</style>
+</head>
+<body>
+
+    <!-- Header -->
+<header>
+  <div class="logo">
+      <a href="https://evidencer.freeweb3.com/" target="_blank">
+          <img src="%F0%9F%94%90%E2%9A%96%EF%B8%8F%209.%20Claim%20Attestation_files/QmRMssmpnd1ZVqoM82oaxbhLVXPiTDfkWA46WfPkYRcTxj.svg" alt="Evidencer">
+      </a>
+  </div>
+
+
+  <div class="logo-with-link">
+      <a href="https://evidencer.freeweb3.com/" target="_blank">
+          <img src="%F0%9F%94%90%E2%9A%96%EF%B8%8F%209.%20Claim%20Attestation_files/QmP9tW2r473BdCPGGtK8pY73Eo4zLcNbjE25eGEM13wLYt.png" alt="Evidencer Digital Claim Manager" width="350" height="100">
+          <figcaption style="font-family: 'EB Garamond', serif; margin-left: 20px; font-size: 14pt;">Claim Management System</figcaption>
+      </a>
+  </div>
+
+
+  <div class="header-links">
+    <a href="https://lexautomatico.com/" target="_blank">LexAutomatico</a>
+    <a href="https://lex.freeweb3.com/" target="_blank">SmartLaw</a> 
+    <a href="https://web3bits.com/" target="_blank">Courtroom</a> 
+</div>
+  <div class="nav">
+      <div class="dropdown">
+          <button class="dropbtn">☰</button>
+          <div class="dropdown-content">
+            <a href="https://users.freeweb3.com/" target="_blank">Setup User Account</a>
+            <a href="https://upload.freeweb3.com/" target="_blank">Raw Data Upload</a>
+            <a href="https://encrypted-ipfs-upload.freeweb3.com/" target="_blank">Encrypted JSON Upload</a>
+            <a href="https://image,encrypt.freeweb3.com/" target="_blank">Encrypted Image Upload</a>
+            <a href="https://image.decoder.freeweb3.com/" target="_blank">Image Decoder</a>
+            <a href="https://forms.evidencer.freeweb3.com/" target="_blank">Evidencer Forms</a>
+            <a href="https://query.evidencer.freeweb3.com/" target="_blank">Query Digital Artifacts</a>
+            <a href="https://artifacts.freeweb3.com/" target="_blank">Create Digital Artifacts</a>
+            <a href="https://cidtochain.freeweb3.com/" target="_blank">CID to Chain</a>
+            <a href="https://cidtochainfree.freeweb3.com/" target="_blank">CID to Chain Free</a>
+        </div>
+      </div>
+
+
+      <div class="additional-element"></div> <!-- New element -->
+      <div class="nav">
+          <div class="dropdown">
+              <button class="dropbtn">≪</button>
+          </div>
+      </div>
+      
+      <div class="additional-element"></div> <!-- New element -->
+      <div class="nav">
+          <div class="dropdown">
+              <button class="dropbtn">≫</button>
+          </div>
+      </div>
+    
+    </div></header>
+
+  <!-- Second Header -->
+  <header class="second-header">
+    <div class="navigation-links">
+
+    <a href="https://encrypted-ipfs-upload.freeweb3.com/" target="_blank">Encrypted Upload</a>
+
+
+
+    <a href="https://forms.evidencer.freeweb3.com/" target="_blank" style="margin-left: auto;">Evidencer Forms</a>
+
+
+    </div>
+  </header>
+
+
+<h1>9. Claim Attestation (9/15)</h1>
+
+<form id="attestationForm">
+  <fieldset>
+    <legend>Attestation</legend>
+    <label for="coreTestimonialStatements">Core Testimonial Statements:</label>
+    <select id="coreTestimonialStatements" name="coreTestimonialStatements">
+      <option value="" selected="selected">Select...</option>
+      <option value="True and complete record">The information submitted here is a true and complete record to establish a party identity.</option>
+      <option value="Electronic signature and affirmation statement">Electronic signature and affirmation statement</option>
+    </select>
+
+    <label for="coreTestimonialStatementsArea">Core Testimonial Statements:</label>
+    <textarea id="coreTestimonialStatementsArea" name="coreTestimonialStatementsArea"></textarea>
+    
+    <label for="evidenceType">Type of Evidence:</label>
+    <select id="evidenceType" name="evidenceType">
+    <option value="" selected="selected">Select...</option>
+    <option value="TestimonialEvidence">Testimonial Evidence</option>
+    <option value="DocumentaryEvidence">Documentary Evidence</option>
+    <option value="RealEvidence">Real Evidence</option>
+    <option value="DemonstrativeEvidence">Demonstrative Evidence</option>
+    <option value="ExpertTestimony">Expert Testimony</option>
+    <option value="HearsayExceptions">Hearsay Exceptions</option>
+    <option value="AdmissionsandConfessions">Admissions and Confessions</option>
+    <option value="PublicRecordsandReports">Public Records and Reports</option>
+    <option value="BusinessRecords">Business Records</option>
+    <option value="JudicialNotice">Judicial Notice</option>
+    
+  </select>
+  <br><br>
+  <label for="esi">Electronically Stored Information (ESI):</label>
+  <textarea id="esi" name="esi" rows="4"></textarea>
+  
+  <div id="hashFields"></div>
+  <button type="button" onclick="addHashField()">Add ESI Hash</button>
+  
+</fieldset>
+
+
+
+  <fieldset>
+
+<legend>Contact and Claim Reference Materials</legend>
+
+  <!-- Core Testimonial Statements -->
+  <label for="primaryEthereumAccount">Primary Ethereum Account:</label>
+  <input type="text" id="primaryEthereumAccount" name="primaryEthereumAccount">
+
+  <label for="secondaryEthereumAccount">Secondary Ethereum Account:</label>
+  <input type="text" id="secondaryEthereumAccount" name="secondaryEthereumAccount">
+
+  <label for="websiteForAnalysis">Website for Analysis of ESI Evidence and Claim Testimony:</label>
+  <input type="text" id="websiteForAnalysis" name="websiteForAnalysis">
+
+  <label for="optionalWebsiteForAnalysis">Optional Website for Analysis of ESI Evidence and Claim Testimony:</label>
+  <input type="text" id="optionalWebsiteForAnalysis" name="optionalWebsiteForAnalysis">
+
+  <label for="emailForVerification">Email for Claim Data Verification:</label>
+  <input type="email" id="emailForVerification" name="emailForVerification">
+
+  <label for="optionalEmailForVerification">Optional Email for Claim Data Verification:</label>
+  <input type="email" id="optionalEmailForVerification" name="optionalEmailForVerification">
+
+  <label for="telephoneNumber">Telephone Number of Responsible Party:</label>
+  <input type="tel" id="telephoneNumber" name="telephoneNumber">
+  </fieldset>
+
+
+  <fieldset>
+    <legend>Statements</legend>
+
+  
+  <!-- Submission -->
+  <legend>Submission</legend>
+  <label for="supplementalAttestations">Supplemental Attestations:</label>
+  <select id="supplementalAttestations" name="supplementalAttestations">
+    <option value="" selected="selected">Select...</option>
+    <option value="Attestation and Submission">Attestation and Submission</option>
+    <!-- Add more options here -->
+  </select>
+
+  <!-- Supplemental Attestations -->
+  <label for="supplementalAttestation1">Supplemental Attestation 1:</label>
+  <select id="supplementalAttestation1" name="supplementalAttestation1">
+    <option value="" selected="selected">Select...</option>
+    <option value="Attestation">Attestation</option>
+    <option value="Attestation to the Accuracy of the ESI">Attestation to the Accuracy of the ESI</option>
+    <option value="Attestation of the Veracity of this Data">Attestation of the Veracity of this Data</option>
+    <option value="Attestation of Final Adjudication">Attestation of Final Adjudication</option>
+    <option value="esiTrueStatements">esiTrueStatements</option>
+    <option value="electronicSignature">electronicSignature</option>
+    <!-- Add more options here -->
+    </select>
+
+</fieldset>
+
+<fieldset>
+
+    <!-- Victim's Statement -->
+  <legend>Victim's Statement</legend>
+  <label for="victimsStatement">Victim's Statement:</label>
+  <select id="victimsStatement" name="victimsStatement">
+    <option value="" selected="selected">Select...</option>
+    <option value="Unknown origin">I do not know the origin of this.</option>
+    <option value="Uploading without knowledge">I do not know what this is, but I am uploading it anyway.</option>
+    <!-- Add more options here -->
+  </select>
+
+    <!-- Victim's Statement -->
+    <label>Victim's Statement:</label>
+    <input type="checkbox" id="termsAndConditions" name="termsAndConditions">
+    <label for="legalImplications">I confirm understanding of legal implications</label>
+    <br><br>
+    
+</fieldset>
+
+<fieldset>
+
+    <!-- A Proofer attestation -->
+  <legend>Proofer Attestation</legend>
+  <label for="prooferAttestation">Proofer Attestation:</label>
+  <select id="prooferAttestation" name="prooferAttestation">
+    <option value="" selected="selected">Select...</option>
+    <option value="True and complete record">The information submitted here is true and a complete record to establish an Angelics account in the Evidencer system.</option>
+    <!-- Add more options here -->
+  </select>
+
+</fieldset>
+  
+  <br><br>
+
+  
+  <fieldset>
+    
+    <legend>Scoring the Evidence and Witnesses</legend>
+    <br>
+  <label for="evidenceCertainty">Level of Certainty in Evidence:</label>
+  <select id="evidenceCertainty" name="evidenceCertainty">
+    <option value="" selected="selected">Select...</option>
+    <option value="High">High</option>
+    <option value="Medium">Medium</option>
+    <option value="Low">Low</option>
+  </select>
+
+  <br><br>
+
+<label for="eventsRecollection">Events Recollected:</label><br>
+<textarea id="eventsRecollection" rows="4" cols="50" required=""></textarea><br><br>
+
+
+<!-- Supplemental Attestations -->
+<table>
+  <tbody><tr>
+    <td>
+      <label for="highConfidence">Confidence Level:</label>
+    </td>
+    <td>
+      <input type="radio" id="highConfidence" name="confidenceLevel" value="High">
+      <label for="highConfidence">High</label>
+    </td>
+    <td>
+      <input type="radio" id="mediumConfidence" name="confidenceLevel" value="Medium">
+      <label for="mediumConfidence">Medium</label>
+    </td>
+    <td>
+      <input type="radio" id="lowConfidence" name="confidenceLevel" value="Low">
+      <label for="lowConfidence">Low</label>
+    </td>
+  </tr>
+</tbody></table>
+
+  
+
+</fieldset>
+
+
+<fieldset>
+  <legend>Attestations</legend>
+<br>
+
+<br>
+<label for="additionalAttestations">Additional Attestations:</label>
+<textarea id="additionalAttestations" name="additionalAttestations"></textarea>
+
+
+  <!-- Terms and COnditions Attestation -->
+  <input type="checkbox" id="legalImplications" name="legalImplications">
+  <label for="termsAndConditions">I confirm agreement with terms and conditions</label>
+
+  <br>
+  <!-- I am the owner of the ESI account -->
+  <input type="checkbox" id="ownerOfEsiAccount" name="ownerOfEsiAccount">
+  <label for="ownerOfEsiAccount">I am the owner of the ESI account:</label>
+
+      <!-- I am the owner of the ESI account -->
+    
+      <label for="ownerOfEsiAccount">The owner's account:</label>
+      <input type="text" id="ownerOfEsiAccount" name="ownerOfEsiAccount">
+  
+
+
+
+
+  <br>
+  <label for="digitalSignature">Digital Signature:</label>
+  <input type="text" id="digitalSignature" name="digitalSignature">
+  <br>
+
+
+  <!-- Enter today's date -->
+  <label for="todaysDate">Enter Today's Date:</label>
+  <input type="date" id="todaysDate" name="todaysDate">
+
+
+  <label for="esiUsername">ESI Account Username or ID:</label>
+  <input type="text" id="esiUsername" name="esiUsername">
+
+  <!-- If you select a date before today your contribution will process immediately -->
+  <p>If you select a date before today, your contribution will process immediately.</p>
+
+</fieldset>
+
+ 
+
+    <div id="jsonOutput"></div> <!-- This is where the JSON string will be displayed -->
+   
+   
+   
+     <!-- Footer -->
+  <footer>
+    <p><a href="https://lex.freeweb3.com/" target="_blank">Web3 Legal Engineering © 2024</a></p>
+   </footer>
+
+   
+   
+   <script>
+      function addHashField() {
+  const hashContainer = document.createElement('div');
+  hashContainer.innerHTML = `<label>ESI Hash:</label><input type="text" name="esiHash[]">`;
+  document.getElementById('hashFields').appendChild(hashContainer);
+}
+
+      function generateJSON() {
+        const form = document.getElementById('attestationForm');
+        const formData = new FormData(form);
+        const jsonObject = {};
+      
+        // Loop through fieldsets
+        const fieldsets = form.querySelectorAll('fieldset');
+        fieldsets.forEach(fieldset => {
+          const legend = fieldset.querySelector('legend');
+          const fieldsetData = {};
+          const inputs = fieldset.querySelectorAll('input, select, textarea');
+          inputs.forEach(input => {
+            fieldsetData[input.name] = input.value;
+          });
+          jsonObject[legend.textContent] = fieldsetData;
+        });
+      
+        const jsonString = JSON.stringify(jsonObject, null, 2);
+        console.log(jsonString); // Display JSON in console
+      
+        // Display JSON in UI
+        const jsonOutput = document.getElementById('jsonOutput');
+        jsonOutput.innerHTML = '<pre>' + jsonString + '</pre>';            
+      
+        // You can now upload jsonString to IPFS
+        // Example: fetch('https://ipfs.io', { method: 'POST', body: jsonString });
+      }
+
+      function saveFiles() {
+        const jsonData = document.getElementById('jsonOutput').textContent;
+
+        // Prompt the user to confirm filenames
+        const jsonFilename = prompt('Enter filename for JSON file:', 'claim-attestation.json');
+        const txtFilename = prompt('Enter filename for TXT file:', 'claim-attestation.txt');
+
+        if (jsonFilename && txtFilename) {
+            // Save JSON data to files
+            saveToFile(jsonData, jsonFilename);
+            saveToFile(jsonData, txtFilename);
+
+            // Show message indicating file creation and download
+            showMessage('Files created and downloaded successfully.');
+        } else {
+            showMessage('Filename(s) not provided. Files not saved.');
+        }
+    }
+
+    function saveToFile(data, filename) {
+        const blob = new Blob([data], { type: 'application/json' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        link.click();
+    }
+
+    function showMessage(message) {
+        alert(message);
+    }
+
+
+
+
+      </script>
+
+  <button type="button" onclick="generateJSON()">Submit</button>
+</form>
+
+<div id="jsonOutput"></div> <!-- This is where the JSON string will be displayed -->
+
+<br><br>
+<p>You must Create a JSON before saving</p>
+<button id="saveButton" onclick="saveFiles()">Save JSON &amp; TXT</button>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+
+</body></html>
